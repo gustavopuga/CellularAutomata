@@ -8,11 +8,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<organization>
-		<name>Defensoria Pública do Estado de São Paulo</name>
-		<url>http://www.defensoria.sp.gov.br</url>
-	</organization>
-
 	<properties>
 		<java.version>1.8</java.version>
 		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
