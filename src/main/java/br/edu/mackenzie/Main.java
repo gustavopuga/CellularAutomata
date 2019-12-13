@@ -73,11 +73,13 @@ public class Main {
 	XYChart chart = getChart(map, time);
 	new SwingWrapper<XYChart>(chart).displayChart();
 	
+	
+	/* BitmapEncoder.saveBitmap(chart, "./Sarampo_Chart", BitmapFormat.PNG); */
 	/*
-	 * BitmapEncoder.saveBitmap(chart, "./Sarampo_Chart", BitmapFormat.PNG);
 	 * BitmapEncoder.saveBitmapWithDPI(chart, "./Sarampo_Chart_300_DPI",
 	 * BitmapFormat.PNG, 300);
 	 */
+	 
     }
 
 }
