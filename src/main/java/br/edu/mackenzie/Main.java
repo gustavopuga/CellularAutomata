@@ -11,7 +11,6 @@ import org.knowm.xchart.BitmapEncoder.BitmapFormat;
 import org.knowm.xchart.SwingWrapper;
 import org.knowm.xchart.XYChart;
 import org.knowm.xchart.XYChartBuilder;
-import org.knowm.xchart.XYSeries;
 import org.knowm.xchart.XYSeries.XYSeriesRenderStyle;
 import org.knowm.xchart.style.Styler.ChartTheme;
 import org.knowm.xchart.style.Styler.LegendPosition;
@@ -74,8 +73,11 @@ public class Main {
 	XYChart chart = getChart(map, time);
 	new SwingWrapper<XYChart>(chart).displayChart();
 	
-	BitmapEncoder.saveBitmap(chart, "./Sarampo_Chart", BitmapFormat.PNG);	
-	BitmapEncoder.saveBitmapWithDPI(chart, "./Sarampo_Chart_300_DPI", BitmapFormat.PNG, 300);
+	/*
+	 * BitmapEncoder.saveBitmap(chart, "./Sarampo_Chart", BitmapFormat.PNG);
+	 * BitmapEncoder.saveBitmapWithDPI(chart, "./Sarampo_Chart_300_DPI",
+	 * BitmapFormat.PNG, 300);
+	 */
     }
 
 }
