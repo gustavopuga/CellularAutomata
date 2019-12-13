@@ -56,9 +56,12 @@ public class Main {
 	Color red = new Color(231, 76, 60);
 	Color green = new Color(46, 204, 113);
 
-	chart.addSeries(PopulationState.SUSCEPTIBLE.getDescription(), xTime, ySusceptible).setMarkerColor(blue).setLineColor(blue);
-	chart.addSeries(PopulationState.INFECTIOUS.getDescription(), xTime, yInfectious).setMarkerColor(red).setLineColor(red);
-	chart.addSeries(PopulationState.RECOVERY.getDescription(), xTime, yRecovery).setMarkerColor(green).setLineColor(green);
+	chart.addSeries(PopulationState.SUSCEPTIBLE.getDescription(), xTime, ySusceptible).setMarkerColor(blue)
+		.setLineColor(blue);
+	chart.addSeries(PopulationState.INFECTIOUS.getDescription(), xTime, yInfectious).setMarkerColor(red)
+		.setLineColor(red);
+	chart.addSeries(PopulationState.RECOVERY.getDescription(), xTime, yRecovery).setMarkerColor(green)
+		.setLineColor(green);
 
 	return chart;
     }
@@ -66,20 +69,19 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
 	int time = 200;
-	SarampoCellularAutomata ca = new SarampoCellularAutomata(200, 200);
+	CellularAutomata ca = new CellularAutomata(200, 200);
 	ca.nextGeneration(time);
 
-	Map<PopulationState, List<Integer>> map = ca.generateMap();
+	Map<PopulationState, List<Integer>> map = ca.generateGenerationsStateMap();
 	XYChart chart = getChart(map, time);
 	new SwingWrapper<XYChart>(chart).displayChart();
-	
-	
+
 	/* BitmapEncoder.saveBitmap(chart, "./Sarampo_Chart", BitmapFormat.PNG); */
 	/*
 	 * BitmapEncoder.saveBitmapWithDPI(chart, "./Sarampo_Chart_300_DPI",
 	 * BitmapFormat.PNG, 300);
 	 */
-	 
+
     }
 
 }
