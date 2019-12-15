@@ -17,71 +17,83 @@ import org.knowm.xchart.style.Styler.LegendPosition;
 
 public class Main {
 
-    public static XYChart getChart(Map<PopulationState, List<Integer>> map, int generations) {
+	private static int columns = 400;
+	private static int rows = 400;
+	private static long normalize = columns * rows;
+	
+	public static XYChart getChart(Map<PopulationState, List<Double>> map, int generations) {
 
-	// Create Chart
-	XYChart chart = new XYChartBuilder().width(800).height(600).title("População Sarampo").xAxisTitle("Tempo")
-		.yAxisTitle("População").theme(ChartTheme.Matlab).build();
+		// Create Chart
+		XYChart chart = new XYChartBuilder().width(800).height(600).title("População Sarampo").xAxisTitle("Tempo")
+				.yAxisTitle("População").theme(ChartTheme.Matlab).build();
 
-	// Customize Chart
-	chart.getStyler().setLegendPosition(LegendPosition.OutsideE);
-	chart.getStyler().setLegendVisible(true);
-	chart.getStyler().setDefaultSeriesRenderStyle(XYSeriesRenderStyle.Line);
+		// Customize Chart
+		chart.getStyler().setLegendPosition(LegendPosition.OutsideE);
+		chart.getStyler().setLegendVisible(true);
+		chart.getStyler().setDefaultSeriesRenderStyle(XYSeriesRenderStyle.Line);
 
-	int[] ySusceptible = null;
-	int[] yInfectious = null;
-	int[] yRecovery = null;
-	int[] xTime = IntStream.rangeClosed(1, generations).toArray();
+		double[] ySusceptible = null;
+		double[] yInfectious = null;
+		double[] yRecovery = null;
+		double[] xTime = IntStream.rangeClosed(1, generations).asDoubleStream().toArray();
+		
+		
+		for (PopulationState state : map.keySet()) {
+			switch (state) {
 
-	for (PopulationState state : map.keySet()) {
-	    switch (state) {
+			case SUSCEPTIBLE:
+				ySusceptible = map.get(state).stream().mapToDouble(i -> i/normalize).toArray();
+				break;
 
-	    case SUSCEPTIBLE:
-		ySusceptible = map.get(state).stream().mapToInt(i -> (int) i).toArray();
-		break;
+			case INFECTIOUS:
+				yInfectious = map.get(state).stream().mapToDouble(i -> i/normalize).toArray();
+				break;
 
-	    case INFECTIOUS:
-		yInfectious = map.get(state).stream().mapToInt(i -> (int) i).toArray();
-		break;
+			case RECOVERY:
+				yRecovery = map.get(state).stream().mapToDouble(i -> i/normalize).toArray();
+				break;
 
-	    case RECOVERY:
-		yRecovery = map.get(state).stream().mapToInt(i -> (int) i).toArray();
-		break;
+			}
 
-	    }
+		}
 
+		Color blue = new Color(52, 152, 219);
+		Color red = new Color(231, 76, 60);
+		Color green = new Color(46, 204, 113);
+
+		chart.addSeries(PopulationState.SUSCEPTIBLE.getDescription(), xTime, ySusceptible).setMarkerColor(blue)
+				.setLineColor(blue);
+		chart.addSeries(PopulationState.INFECTIOUS.getDescription(), xTime, yInfectious).setMarkerColor(red)
+				.setLineColor(red);
+		chart.addSeries(PopulationState.RECOVERY.getDescription(), xTime, yRecovery).setMarkerColor(green)
+				.setLineColor(green);
+
+		return chart;
 	}
 
-	Color blue = new Color(52, 152, 219);
-	Color red = new Color(231, 76, 60);
-	Color green = new Color(46, 204, 113);
+	public static void main(String[] args) throws IOException {
 
-	chart.addSeries(PopulationState.SUSCEPTIBLE.getDescription(), xTime, ySusceptible).setMarkerColor(blue)
-		.setLineColor(blue);
-	chart.addSeries(PopulationState.INFECTIOUS.getDescription(), xTime, yInfectious).setMarkerColor(red)
-		.setLineColor(red);
-	chart.addSeries(PopulationState.RECOVERY.getDescription(), xTime, yRecovery).setMarkerColor(green)
-		.setLineColor(green);
+		
+		
+		  int time = 100; 
+		  CellularAutomata ca = new CellularAutomata(columns, rows);
+		  ca.nextGeneration(time);
+		  
+		  Map<PopulationState, List<Double>> map = ca.generateGenerationsStateMap();
+		  XYChart chart = getChart(map, time); new
+		  SwingWrapper<XYChart>(chart).displayChart();
+		 
 
-	return chart;
-    }
+		/* BitmapEncoder.saveBitmap(chart, "./Sarampo_Chart", BitmapFormat.PNG); */ 
+		
+		
+		/*
+		 * BitmapEncoder.saveBitmapWithDPI(chart, "./Sarampo_Chart_300_DPI",
+		 * BitmapFormat.PNG, 300);
+		 */
+		 
+		 
 
-    public static void main(String[] args) throws IOException {
-
-	int time = 200;
-	CellularAutomata ca = new CellularAutomata(200, 200);
-	ca.nextGeneration(time);
-
-	Map<PopulationState, List<Integer>> map = ca.generateGenerationsStateMap();
-	XYChart chart = getChart(map, time);
-	new SwingWrapper<XYChart>(chart).displayChart();
-
-	/* BitmapEncoder.saveBitmap(chart, "./Sarampo_Chart", BitmapFormat.PNG); */
-	/*
-	 * BitmapEncoder.saveBitmapWithDPI(chart, "./Sarampo_Chart_300_DPI",
-	 * BitmapFormat.PNG, 300);
-	 */
-
-    }
+	}
 
 }

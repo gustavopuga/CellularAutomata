@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>br.edu.mackenzie</groupId>
-	<artifactId>teste_ca</artifactId>
+	<artifactId>cellular_automata</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
