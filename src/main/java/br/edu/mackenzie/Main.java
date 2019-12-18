@@ -17,10 +17,6 @@ import org.knowm.xchart.style.Styler.LegendPosition;
 
 public class Main {
 
-    private static int columns = 200;
-    private static int rows = 200;
-    private static long normalize = columns * rows;
-
     public static XYChart getChart(Map<PopulationState, List<Double>> map, int generations) {
 
 	// Create Chart
@@ -37,19 +33,20 @@ public class Main {
 	double[] yRecovery = null;
 	double[] xTime = IntStream.rangeClosed(1, generations).asDoubleStream().toArray();
 
+	map.keySet().stream().map(key -> map.get(key));
 	for (PopulationState state : map.keySet()) {
 	    switch (state) {
 
 	    case SUSCEPTIBLE:
-		ySusceptible = map.get(state).stream().mapToDouble(i -> i / normalize).toArray();
+		ySusceptible = map.get(state).stream().mapToDouble(i -> i / Constants.NORMALIZE).toArray();
 		break;
 
 	    case INFECTIOUS:
-		yInfectious = map.get(state).stream().mapToDouble(i -> i / normalize).toArray();
+		yInfectious = map.get(state).stream().mapToDouble(i -> i / Constants.NORMALIZE).toArray();
 		break;
 
 	    case RECOVERY:
-		yRecovery = map.get(state).stream().mapToDouble(i -> i / normalize).toArray();
+		yRecovery = map.get(state).stream().mapToDouble(i -> i / Constants.NORMALIZE).toArray();
 		break;
 
 	    }
@@ -72,20 +69,18 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-	int time = 100;
-	CellularAutomata ca = new CellularAutomata(columns, rows);
-	ca.nextGeneration(time);
+	CellularAutomata ca = new CellularAutomata(Constants.COLUMNS, Constants.ROWS);
+	ca.nextGeneration(Constants.TIME);
 
 	Map<PopulationState, List<Double>> map = ca.generateGenerationsStateMap();
-	XYChart chart = getChart(map, time);
+	XYChart chart = getChart(map, Constants.TIME);
 	new SwingWrapper<XYChart>(chart).displayChart();
 
 	/* BitmapEncoder.saveBitmap(chart, "./Sarampo_Chart", BitmapFormat.PNG); */
+
 	
-	/*
-	 * BitmapEncoder.saveBitmapWithDPI(chart, "./Sarampo_Chart_300_DPI",
-	 * BitmapFormat.PNG, 300);
-	 */
+	  BitmapEncoder.saveBitmapWithDPI(chart, "./Sarampo_Chart_300_DPI",
+	  BitmapFormat.PNG, 300);
 	 
 
     }

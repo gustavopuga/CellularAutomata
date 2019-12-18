@@ -1,57 +1,49 @@
 package br.edu.mackenzie;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.PriorityQueue;
-import java.util.stream.Collectors;
+import java.util.function.Function;
 
 public enum PopulationState {
 
-    SUSCEPTIBLE(0, "Suscetível", 0.6, 0.99), INFECTIOUS(1, "Infectado", 0.3, 0.01), RECOVERY(2, "Recuperado", 0.1, 0d);
+    SUSCEPTIBLE(0, "Suscetível", 0.99),
+    INFECTIOUS(1, "Infectado", 0.01), 
+    RECOVERY(2, "Recuperado", 0d);
 
-    private final static double K = 1;
-    private final Map<PopulationState, Collection<PopulationState>> graph = new HashMap<>();
+    private final Map<PopulationState, Map<PopulationState, Function<Double, Function<Double, Double>>>> graph = new HashMap<>();
 
     private final int value;
     private final String description;
-    private final Double probability;
     private final Double populationPercentage;
 
-    private PopulationState(int value, String description, double probability, Double populationPercentage) {
+    private PopulationState(int value, String description, Double populationPercentage) {
 
 	this.value = value;
 	this.description = description;
-	this.probability = probability;
 	this.populationPercentage = populationPercentage;
     }
 
     private void initGraph() {
 
-	Comparator<PopulationState> probabilityComparator = generateProbabilityComparator();
+	Map<PopulationState, Function<Double, Function<Double, Double>>> susceptibleVertex = new LinkedHashMap<>();
+	susceptibleVertex.put(INFECTIOUS, v -> k -> 1 - Math.pow(Math.E, -1 * k * v));
 
-	Collection<PopulationState> susceptibleVertex = new PriorityQueue<>(probabilityComparator);
-	susceptibleVertex.add(INFECTIOUS);
+	Map<PopulationState, Function<Double, Function<Double, Double>>> infectiousVertex = new LinkedHashMap<>();
+	infectiousVertex.put(RECOVERY, v -> k -> 0.6);
+	infectiousVertex.put(SUSCEPTIBLE, v -> k -> 0.3);
 
-	Collection<PopulationState> infectiousVertex = new PriorityQueue<>(probabilityComparator);
-	infectiousVertex.add(RECOVERY);
-	infectiousVertex.add(SUSCEPTIBLE);
-
-	Collection<PopulationState> recoveryVertex = new PriorityQueue<>(probabilityComparator);
-	recoveryVertex.add(SUSCEPTIBLE);
+	Map<PopulationState, Function<Double, Function<Double, Double>>> recoveryVertex = new LinkedHashMap<>();
+	recoveryVertex.put(SUSCEPTIBLE, v -> k -> 0.1);
 
 	graph.put(SUSCEPTIBLE, susceptibleVertex);
 	graph.put(INFECTIOUS, infectiousVertex);
 	graph.put(RECOVERY, recoveryVertex);
 
-    }
-
-    private Comparator<PopulationState> generateProbabilityComparator() {
-
-	return (state1, state2) -> Double.compare(state1 == null ? -1 : state1.probability,
-		state2 == null ? -1 : state2.probability);
     }
 
     public int getValue() {
@@ -64,21 +56,21 @@ public enum PopulationState {
 
     public PopulationState applyRule(List<PopulationState> neighborhood) {
 
-	long k = neighborhood.stream().filter(n -> this.equals(n)).count();
-	return applyRule(k);
-    }
-
-    public PopulationState applyRule(long v) {
-	
-	double probability = 1 - Math.pow(Math.E, -1 * K * v );
+	double v = neighborhood.stream().filter(n -> this.equals(n)).count();
 	
 	if (graph.isEmpty()) {
 	    initGraph();
 	}
 
 	PopulationState newState = this;
-	for (PopulationState state : this.graph.get(this)) {
-	    if (probability < state.probability) {
+	Map<PopulationState, Function<Double, Function<Double, Double>>> vertexMap = this.graph.get(this);
+	
+	for (PopulationState state : vertexMap.keySet()) {
+	    
+	    double neighborhoodProbability = neighborhood.stream().filter(n -> state.equals(n)).count()/neighborhood.size();
+	    double probability = vertexMap.get(state).apply(v).apply(Constants.K);
+	    
+	    if (probability < neighborhoodProbability) {
 		newState = state;
 		break;
 	    }
