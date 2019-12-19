@@ -1,12 +1,10 @@
 package br.edu.mackenzie;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+import java.util.TreeMap;
 import java.util.function.Function;
 
 public enum PopulationState {
@@ -30,14 +28,14 @@ public enum PopulationState {
 
     private void initGraph() {
 
-	Map<PopulationState, Function<Double, Function<Double, Double>>> susceptibleVertex = new LinkedHashMap<>();
+	Map<PopulationState, Function<Double, Function<Double, Double>>> susceptibleVertex = new TreeMap<>();
 	susceptibleVertex.put(INFECTIOUS, v -> k -> 1 - Math.pow(Math.E, -1 * k * v));
 
-	Map<PopulationState, Function<Double, Function<Double, Double>>> infectiousVertex = new LinkedHashMap<>();
+	Map<PopulationState, Function<Double, Function<Double, Double>>> infectiousVertex = new TreeMap<>();
 	infectiousVertex.put(RECOVERY, v -> k -> 0.6);
 	infectiousVertex.put(SUSCEPTIBLE, v -> k -> 0.3);
 
-	Map<PopulationState, Function<Double, Function<Double, Double>>> recoveryVertex = new LinkedHashMap<>();
+	Map<PopulationState, Function<Double, Function<Double, Double>>> recoveryVertex = new TreeMap<>();
 	recoveryVertex.put(SUSCEPTIBLE, v -> k -> 0.1);
 
 	graph.put(SUSCEPTIBLE, susceptibleVertex);
@@ -65,12 +63,12 @@ public enum PopulationState {
 	PopulationState newState = this;
 	Map<PopulationState, Function<Double, Function<Double, Double>>> vertexMap = this.graph.get(this);
 	
+	Random random = new Random();
 	for (PopulationState state : vertexMap.keySet()) {
 	    
-	    double neighborhoodProbability = neighborhood.stream().filter(n -> state.equals(n)).count()/neighborhood.size();
 	    double probability = vertexMap.get(state).apply(v).apply(Constants.K);
 	    
-	    if (probability < neighborhoodProbability) {
+	    if (random.nextDouble() < probability) {
 		newState = state;
 		break;
 	    }
