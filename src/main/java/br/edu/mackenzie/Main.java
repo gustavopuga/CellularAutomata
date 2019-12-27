@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
 
-import org.knowm.xchart.BitmapEncoder;
-import org.knowm.xchart.BitmapEncoder.BitmapFormat;
 import org.knowm.xchart.SwingWrapper;
 import org.knowm.xchart.XYChart;
 import org.knowm.xchart.XYChartBuilder;
@@ -69,26 +67,19 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-	/*
-	 * CellularAutomata ca = new CellularAutomata(Constants.COLUMNS,
-	 * Constants.ROWS); ca.nextGeneration(Constants.TIME);
-	 * 
-	 * Map<PopulationState, List<Double>> map = ca.generateGenerationsStateMap();
-	 * XYChart chart = getChart(map, Constants.TIME); new
-	 * SwingWrapper<XYChart>(chart).displayChart();
-	 */
+	CellularAutomata ca = new CellularAutomata(Constants.COLUMNS, Constants.ROWS);
+	ca.nextGeneration(Constants.TIME);
 
-	String a = "https://testeonline.defensoria.sp.gov.br/upload/download?hash=pastaUnica/editar/652367/385981";
-	System.out.println(a.charAt(92));
-	
+	Map<PopulationState, List<Double>> map = ca.generateGenerationsStateMap();
+	XYChart chart = getChart(map, Constants.TIME);
+	new SwingWrapper<XYChart>(chart).displayChart();
+
 	/* BitmapEncoder.saveBitmap(chart, "./Sarampo_Chart", BitmapFormat.PNG); */
 
-	
 	/*
 	 * BitmapEncoder.saveBitmapWithDPI(chart, "./Sarampo_Chart_300_DPI",
 	 * BitmapFormat.PNG, 300);
 	 */
-	 
 
     }
 

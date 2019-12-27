@@ -3,15 +3,15 @@ package br.edu.mackenzie;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import java.util.TreeMap;
 import java.util.function.Function;
 
 public enum PopulationState {
 
-    SUSCEPTIBLE(0, "Suscetível", 0.99),
+    SUSCEPTIBLE(0, "Suscetível", 0.99), 
     INFECTIOUS(1, "Infectado", 0.01), 
     RECOVERY(2, "Recuperado", 0d);
 
@@ -30,38 +30,39 @@ public enum PopulationState {
 
     private void initGraph() {
 
-	Collection<Function<Double, Function<Double, Double>>> susceptibleRecoveryRules = new ArrayList<>();
-	susceptibleRecoveryRules.add(v -> k -> 0.9);
+	if (graph.isEmpty()) {
 
-	Collection<Function<Double, Function<Double, Double>>> susceptibleInfectiousRules = new ArrayList<>();
-	susceptibleInfectiousRules.add(v -> k -> 0.01);
-	susceptibleInfectiousRules.add(v -> k -> 1 - Math.pow(Math.E, -1 * k * v));
+	    Collection<Function<Double, Function<Double, Double>>> susceptibleRecoveryRules = new ArrayList<>();
+	    susceptibleRecoveryRules.add(v -> k -> 0.1);
 
-	Map<PopulationState, Collection<Function<Double, Function<Double, Double>>>> susceptibleVertex = new TreeMap<>();
-	susceptibleVertex.put(RECOVERY, susceptibleRecoveryRules);
-	susceptibleVertex.put(INFECTIOUS, susceptibleInfectiousRules);
+	    Collection<Function<Double, Function<Double, Double>>> susceptibleInfectiousRules = new ArrayList<>();
+	    susceptibleInfectiousRules.add(v -> k -> 0.1);
+	    susceptibleInfectiousRules.add(v -> k -> 1 - Math.pow(Math.E, -1 * k * v));
 
-	
-	Collection<Function<Double, Function<Double, Double>>> infectiousRecoveryRules = new ArrayList<>();
-	infectiousRecoveryRules.add(v -> k -> 0.6);
+	    Map<PopulationState, Collection<Function<Double, Function<Double, Double>>>> susceptibleVertex = new LinkedHashMap<>();
+	    susceptibleVertex.put(RECOVERY, susceptibleRecoveryRules);
+	    susceptibleVertex.put(INFECTIOUS, susceptibleInfectiousRules);
 
-	Collection<Function<Double, Function<Double, Double>>> infectiousSusceptibleRules = new ArrayList<>();
-	infectiousSusceptibleRules.add(v -> k -> 0.3);
-	
-	Map<PopulationState, Collection<Function<Double, Function<Double, Double>>>> infectiousVertex = new TreeMap<>();
-	infectiousVertex.put(RECOVERY, infectiousRecoveryRules);
-	infectiousVertex.put(SUSCEPTIBLE, infectiousSusceptibleRules);
+	    Collection<Function<Double, Function<Double, Double>>> infectiousRecoveryRules = new ArrayList<>();
+	    infectiousRecoveryRules.add(v -> k -> 0.6);
 
-	
-	Collection<Function<Double, Function<Double, Double>>> recoverySusceptibleRules = new ArrayList<>();
-	recoverySusceptibleRules.add(v -> k -> 0.1);
-	
-	Map<PopulationState, Collection<Function<Double, Function<Double, Double>>>> recoveryVertex = new TreeMap<>();
-	recoveryVertex.put(SUSCEPTIBLE, recoverySusceptibleRules);
+	    Collection<Function<Double, Function<Double, Double>>> infectiousSusceptibleRules = new ArrayList<>();
+	    infectiousSusceptibleRules.add(v -> k -> 0.3);
 
-	graph.put(SUSCEPTIBLE, susceptibleVertex);
-	graph.put(INFECTIOUS, infectiousVertex);
-	graph.put(RECOVERY, recoveryVertex);
+	    Map<PopulationState, Collection<Function<Double, Function<Double, Double>>>> infectiousVertex = new LinkedHashMap<>();
+	    infectiousVertex.put(RECOVERY, infectiousRecoveryRules);
+	    infectiousVertex.put(SUSCEPTIBLE, infectiousSusceptibleRules);
+
+	    Collection<Function<Double, Function<Double, Double>>> recoverySusceptibleRules = new ArrayList<>();
+	    recoverySusceptibleRules.add(v -> k -> 0.1);
+
+	    Map<PopulationState, Collection<Function<Double, Function<Double, Double>>>> recoveryVertex = new LinkedHashMap<>();
+	    recoveryVertex.put(SUSCEPTIBLE, recoverySusceptibleRules);
+
+	    graph.put(SUSCEPTIBLE, susceptibleVertex);
+	    graph.put(INFECTIOUS, infectiousVertex);
+	    graph.put(RECOVERY, recoveryVertex);
+	}
 
     }
 
@@ -77,28 +78,23 @@ public enum PopulationState {
 
 	double v = neighborhood.stream().filter(n -> this.equals(n)).count();
 	
-	if (graph.isEmpty()) {
-	    initGraph();
-	}
-
-	PopulationState newState = this;
+	initGraph();
 	Map<PopulationState, Collection<Function<Double, Function<Double, Double>>>> vertexMap = this.graph.get(this);
-	
+
 	Random random = new Random();
 	for (PopulationState state : vertexMap.keySet()) {
 	    
 	    Collection<Function<Double, Function<Double, Double>>> rules = vertexMap.get(state);
-	    for (Function<Double, Function<Double, Double>> rule : rules) {		
-		
+	    for (Function<Double, Function<Double, Double>> rule : rules) {
+
 		double probability = rule.apply(v).apply(Constants.K);
 		if (random.nextDouble() < probability) {
-		    newState = state;
-		    break;
+		    return state;
 		}
 	    }
 	}
 
-	return newState;
+	return this;
     }
 
     public Double getPopulationPercentage() {
