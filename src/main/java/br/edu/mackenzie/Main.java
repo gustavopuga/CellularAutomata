@@ -1,6 +1,5 @@
 package br.edu.mackenzie;
 
-import java.awt.Color;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -13,9 +12,14 @@ import org.knowm.xchart.XYSeries.XYSeriesRenderStyle;
 import org.knowm.xchart.style.Styler.ChartTheme;
 import org.knowm.xchart.style.Styler.LegendPosition;
 
+import br.edu.mackenzie.cellular_automata.CellularAutomata;
+import br.edu.mackenzie.cellular_automata.neighborhood.MooreNeighborhood;
+import br.edu.mackenzie.cellular_automata.state.CellularAutomataState;
+import br.edu.mackenzie.cellular_automata.state.PopulationState;
+
 public class Main {
 
-    public static XYChart getChart(Map<PopulationState, List<Double>> map, int generations) {
+    public static XYChart getChart(Map<CellularAutomataState, List<Double>> map, int generations) {
 
 	// Create Chart
 	XYChart chart = new XYChartBuilder().width(800).height(600).title("População Sarampo").xAxisTitle("Tempo")
@@ -26,51 +30,26 @@ public class Main {
 	chart.getStyler().setLegendVisible(true);
 	chart.getStyler().setDefaultSeriesRenderStyle(XYSeriesRenderStyle.Line);
 
-	double[] ySusceptible = null;
-	double[] yInfectious = null;
-	double[] yRecovery = null;
 	double[] xTime = IntStream.rangeClosed(1, generations).asDoubleStream().toArray();
 
 	map.keySet().stream().map(key -> map.get(key));
-	for (PopulationState state : map.keySet()) {
-	    switch (state) {
+	for (CellularAutomataState state : map.keySet()) {
 
-	    case SUSCEPTIBLE:
-		ySusceptible = map.get(state).stream().mapToDouble(i -> i / Constants.NORMALIZE).toArray();
-		break;
-
-	    case INFECTIOUS:
-		yInfectious = map.get(state).stream().mapToDouble(i -> i / Constants.NORMALIZE).toArray();
-		break;
-
-	    case RECOVERY:
-		yRecovery = map.get(state).stream().mapToDouble(i -> i / Constants.NORMALIZE).toArray();
-		break;
-
-	    }
+	    double[] y = map.get(state).stream().mapToDouble(i -> i / Constants.NORMALIZE).toArray();
+	    chart.addSeries(state.getDescription(), xTime, y);
 
 	}
-
-	Color blue = new Color(52, 152, 219);
-	Color red = new Color(231, 76, 60);
-	Color green = new Color(46, 204, 113);
-
-	chart.addSeries(PopulationState.SUSCEPTIBLE.getDescription(), xTime, ySusceptible).setMarkerColor(blue)
-		.setLineColor(blue);
-	chart.addSeries(PopulationState.INFECTIOUS.getDescription(), xTime, yInfectious).setMarkerColor(red)
-		.setLineColor(red);
-	chart.addSeries(PopulationState.RECOVERY.getDescription(), xTime, yRecovery).setMarkerColor(green)
-		.setLineColor(green);
 
 	return chart;
     }
 
     public static void main(String[] args) throws IOException {
 
-	CellularAutomata ca = new CellularAutomata(Constants.COLUMNS, Constants.ROWS);
+	CellularAutomata ca = new CellularAutomata(Constants.COLUMNS, Constants.ROWS, new MooreNeighborhood(1),
+		PopulationState.class);
 	ca.nextGeneration(Constants.TIME);
 
-	Map<PopulationState, List<Double>> map = ca.generateGenerationsStateMap();
+	Map<CellularAutomataState, List<Double>> map = ca.generateGenerationsStateMap();
 	XYChart chart = getChart(map, Constants.TIME);
 	new SwingWrapper<XYChart>(chart).displayChart();
 

@@ -1,4 +1,4 @@
-package br.edu.mackenzie;
+package br.edu.mackenzie.cellular_automata.state;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,11 +9,11 @@ import java.util.Map;
 import java.util.Random;
 import java.util.function.Function;
 
-public enum PopulationState {
+import br.edu.mackenzie.Constants;
 
-    SUSCEPTIBLE(0, "Suscetível", 0.99), 
-    INFECTIOUS(1, "Infectado", 0.01), 
-    RECOVERY(2, "Recuperado", 0d);
+public enum PopulationState implements CellularAutomataState {
+
+    SUSCEPTIBLE(0, "Suscetível", 0.99), INFECTIOUS(1, "Infectado", 0.01), RECOVERY(2, "Recuperado", 0d);
 
     private final Map<PopulationState, Map<PopulationState, Collection<Function<Double, Function<Double, Double>>>>> graph = new HashMap<>();
 
@@ -66,24 +66,27 @@ public enum PopulationState {
 
     }
 
+    @Override
     public int getValue() {
 	return value;
     }
 
+    @Override
     public String getDescription() {
 	return description;
     }
 
-    public PopulationState applyRule(List<PopulationState> neighborhood) {
+    @Override
+    public CellularAutomataState applyRule(List<CellularAutomataState> neighborhood) {
 
 	double v = neighborhood.stream().filter(n -> this.equals(n)).count();
-	
+
 	initGraph();
 	Map<PopulationState, Collection<Function<Double, Function<Double, Double>>>> vertexMap = this.graph.get(this);
 
 	Random random = new Random();
 	for (PopulationState state : vertexMap.keySet()) {
-	    
+
 	    Collection<Function<Double, Function<Double, Double>>> rules = vertexMap.get(state);
 	    for (Function<Double, Function<Double, Double>> rule : rules) {
 
@@ -97,11 +100,12 @@ public enum PopulationState {
 	return this;
     }
 
-    public Double getPopulationPercentage() {
+    @Override
+    public Double getPercentage() {
 	return populationPercentage;
     }
 
-    public static PopulationState get(int value) {
+    public static CellularAutomataState get(int value) {
 	for (PopulationState populationState : values()) {
 	    if (populationState.value == value) {
 		return populationState;
