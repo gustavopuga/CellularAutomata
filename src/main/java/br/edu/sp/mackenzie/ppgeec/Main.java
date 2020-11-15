@@ -1,4 +1,4 @@
-package br.edu.mackenzie;
+package br.edu.sp.mackenzie.ppgeec;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,10 +12,10 @@ import org.knowm.xchart.XYSeries.XYSeriesRenderStyle;
 import org.knowm.xchart.style.Styler.ChartTheme;
 import org.knowm.xchart.style.Styler.LegendPosition;
 
-import br.edu.mackenzie.cellular_automata.CellularAutomata;
-import br.edu.mackenzie.cellular_automata.neighborhood.MooreNeighborhood;
-import br.edu.mackenzie.cellular_automata.state.CellularAutomataState;
-import br.edu.mackenzie.cellular_automata.state.PopulationState;
+import br.edu.sp.mackenzie.ppgeec.ca.CellularAutomata;
+import br.edu.sp.mackenzie.ppgeec.ca.neighborhood.MooreNeighborhood;
+import br.edu.sp.mackenzie.ppgeec.ca.state.CellularAutomataState;
+import br.edu.sp.mackenzie.ppgeec.ca.state.PopulationState;
 
 public class Main {
 

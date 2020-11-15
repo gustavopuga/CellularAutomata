@@ -1,4 +1,4 @@
-package br.edu.mackenzie.cellular_automata.state;
+package br.edu.sp.mackenzie.ppgeec.ca.state;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.function.Function;
 
-import br.edu.mackenzie.Constants;
+import br.edu.sp.mackenzie.ppgeec.Constants;
 
 public enum PopulationState implements CellularAutomataState {
 

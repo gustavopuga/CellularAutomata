@@ -1,4 +1,4 @@
-package br.edu.mackenzie.cellular_automata;
+package br.edu.sp.mackenzie.ppgeec.ca;
 
 import java.util.ArrayList;
 import java.util.EnumSet;
@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import br.edu.mackenzie.cellular_automata.neighborhood.CellularAutomataNeighborhood;
-import br.edu.mackenzie.cellular_automata.state.CellularAutomataState;
+import br.edu.sp.mackenzie.ppgeec.ca.neighborhood.CellularAutomataNeighborhood;
+import br.edu.sp.mackenzie.ppgeec.ca.state.CellularAutomataState;
 
 public class CellularAutomata {
 

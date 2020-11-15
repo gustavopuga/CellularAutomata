@@ -1,4 +1,4 @@
-package br.edu.mackenzie.cellular_automata.state;
+package br.edu.sp.mackenzie.ppgeec.ca.state;
 
 import java.util.List;
 

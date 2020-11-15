@@ -1,4 +1,4 @@
-package br.edu.mackenzie;
+package br.edu.sp.mackenzie.ppgeec;
 
 public class Constants {
 

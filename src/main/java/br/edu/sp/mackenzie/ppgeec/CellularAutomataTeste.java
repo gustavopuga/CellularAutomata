@@ -1,12 +1,12 @@
-package br.edu.mackenzie;
+package br.edu.sp.mackenzie.ppgeec;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import br.edu.mackenzie.cellular_automata.state.CellularAutomataState;
-import br.edu.mackenzie.cellular_automata.state.PopulationState;
+import br.edu.sp.mackenzie.ppgeec.ca.state.CellularAutomataState;
+import br.edu.sp.mackenzie.ppgeec.ca.state.PopulationState;
 
 public class CellularAutomataTeste {
 

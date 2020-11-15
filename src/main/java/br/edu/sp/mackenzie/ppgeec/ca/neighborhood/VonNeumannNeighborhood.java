@@ -1,9 +1,9 @@
-package br.edu.mackenzie.cellular_automata.neighborhood;
+package br.edu.sp.mackenzie.ppgeec.ca.neighborhood;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.mackenzie.cellular_automata.state.CellularAutomataState;
+import br.edu.sp.mackenzie.ppgeec.ca.state.CellularAutomataState;
 
 public class VonNeumannNeighborhood implements CellularAutomataNeighborhood {
 
