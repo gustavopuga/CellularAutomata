@@ -1,8 +1,8 @@
 name,n,year
 Infectado por 2 / nunca contraiu 1,0.01,1
-Infectado por 2 / nunca contraiu 1,0.002275,2
-Infectado por 2 / nunca contraiu 1,5.0E-4,3
-Infectado por 2 / nunca contraiu 1,5.0E-5,4
+Infectado por 2 / nunca contraiu 1,0.002625,2
+Infectado por 2 / nunca contraiu 1,6.25E-4,3
+Infectado por 2 / nunca contraiu 1,1.25E-4,4
 Infectado por 2 / nunca contraiu 1,0.0,5
 Infectado por 2 / nunca contraiu 1,0.0,6
 Infectado por 2 / nunca contraiu 1,0.0,7
@@ -200,58 +200,58 @@ Infectado por 2 / imune a 1 porque contraiu 1,0.0,98
 Infectado por 2 / imune a 1 porque contraiu 1,0.0,99
 Infectado por 2 / imune a 1 porque contraiu 1,0.0,100
 Imune a 2 por ter contraído 2,0.0,1
-Imune a 2 por ter contraído 2,0.00495,2
-Imune a 2 por ter contraído 2,0.005525,3
-Imune a 2 por ter contraído 2,0.005075,4
-Imune a 2 por ter contraído 2,0.00465,5
-Imune a 2 por ter contraído 2,0.004375,6
-Imune a 2 por ter contraído 2,0.00395,7
-Imune a 2 por ter contraído 2,0.00355,8
-Imune a 2 por ter contraído 2,0.0031,9
-Imune a 2 por ter contraído 2,0.002675,10
-Imune a 2 por ter contraído 2,0.002475,11
-Imune a 2 por ter contraído 2,0.002325,12
-Imune a 2 por ter contraído 2,0.0021,13
-Imune a 2 por ter contraído 2,0.00195,14
-Imune a 2 por ter contraído 2,0.00175,15
-Imune a 2 por ter contraído 2,0.0015,16
-Imune a 2 por ter contraído 2,0.0014,17
-Imune a 2 por ter contraído 2,0.001275,18
-Imune a 2 por ter contraído 2,9.75E-4,19
-Imune a 2 por ter contraído 2,8.75E-4,20
-Imune a 2 por ter contraído 2,7.75E-4,21
-Imune a 2 por ter contraído 2,6.5E-4,22
-Imune a 2 por ter contraído 2,6.25E-4,23
-Imune a 2 por ter contraído 2,5.75E-4,24
-Imune a 2 por ter contraído 2,5.0E-4,25
-Imune a 2 por ter contraído 2,4.5E-4,26
-Imune a 2 por ter contraído 2,4.25E-4,27
-Imune a 2 por ter contraído 2,4.0E-4,28
-Imune a 2 por ter contraído 2,3.5E-4,29
-Imune a 2 por ter contraído 2,3.25E-4,30
-Imune a 2 por ter contraído 2,3.25E-4,31
-Imune a 2 por ter contraído 2,3.0E-4,32
-Imune a 2 por ter contraído 2,2.75E-4,33
-Imune a 2 por ter contraído 2,2.75E-4,34
-Imune a 2 por ter contraído 2,2.75E-4,35
-Imune a 2 por ter contraído 2,2.75E-4,36
-Imune a 2 por ter contraído 2,2.75E-4,37
-Imune a 2 por ter contraído 2,1.75E-4,38
-Imune a 2 por ter contraído 2,1.5E-4,39
-Imune a 2 por ter contraído 2,1.25E-4,40
-Imune a 2 por ter contraído 2,1.25E-4,41
-Imune a 2 por ter contraído 2,1.0E-4,42
-Imune a 2 por ter contraído 2,7.5E-5,43
-Imune a 2 por ter contraído 2,7.5E-5,44
+Imune a 2 por ter contraído 2,0.004875,2
+Imune a 2 por ter contraído 2,0.005575,3
+Imune a 2 por ter contraído 2,0.00555,4
+Imune a 2 por ter contraído 2,0.00515,5
+Imune a 2 por ter contraído 2,0.004575,6
+Imune a 2 por ter contraído 2,0.003925,7
+Imune a 2 por ter contraído 2,0.00345,8
+Imune a 2 por ter contraído 2,0.003175,9
+Imune a 2 por ter contraído 2,0.0028,10
+Imune a 2 por ter contraído 2,0.00265,11
+Imune a 2 por ter contraído 2,0.002475,12
+Imune a 2 por ter contraído 2,0.002225,13
+Imune a 2 por ter contraído 2,0.00205,14
+Imune a 2 por ter contraído 2,0.001875,15
+Imune a 2 por ter contraído 2,0.001675,16
+Imune a 2 por ter contraído 2,0.001625,17
+Imune a 2 por ter contraído 2,0.001475,18
+Imune a 2 por ter contraído 2,0.00135,19
+Imune a 2 por ter contraído 2,0.001175,20
+Imune a 2 por ter contraído 2,0.001,21
+Imune a 2 por ter contraído 2,9.75E-4,22
+Imune a 2 por ter contraído 2,9.25E-4,23
+Imune a 2 por ter contraído 2,9.0E-4,24
+Imune a 2 por ter contraído 2,7.75E-4,25
+Imune a 2 por ter contraído 2,7.0E-4,26
+Imune a 2 por ter contraído 2,6.75E-4,27
+Imune a 2 por ter contraído 2,6.25E-4,28
+Imune a 2 por ter contraído 2,6.0E-4,29
+Imune a 2 por ter contraído 2,5.0E-4,30
+Imune a 2 por ter contraído 2,4.5E-4,31
+Imune a 2 por ter contraído 2,4.0E-4,32
+Imune a 2 por ter contraído 2,4.0E-4,33
+Imune a 2 por ter contraído 2,3.25E-4,34
+Imune a 2 por ter contraído 2,3.0E-4,35
+Imune a 2 por ter contraído 2,2.5E-4,36
+Imune a 2 por ter contraído 2,2.25E-4,37
+Imune a 2 por ter contraído 2,2.0E-4,38
+Imune a 2 por ter contraído 2,2.0E-4,39
+Imune a 2 por ter contraído 2,1.75E-4,40
+Imune a 2 por ter contraído 2,1.5E-4,41
+Imune a 2 por ter contraído 2,1.5E-4,42
+Imune a 2 por ter contraído 2,1.25E-4,43
+Imune a 2 por ter contraído 2,1.0E-4,44
 Imune a 2 por ter contraído 2,7.5E-5,45
-Imune a 2 por ter contraído 2,5.0E-5,46
-Imune a 2 por ter contraído 2,5.0E-5,47
+Imune a 2 por ter contraído 2,7.5E-5,46
+Imune a 2 por ter contraído 2,7.5E-5,47
 Imune a 2 por ter contraído 2,5.0E-5,48
 Imune a 2 por ter contraído 2,5.0E-5,49
-Imune a 2 por ter contraído 2,2.5E-5,50
-Imune a 2 por ter contraído 2,2.5E-5,51
-Imune a 2 por ter contraído 2,2.5E-5,52
-Imune a 2 por ter contraído 2,2.5E-5,53
+Imune a 2 por ter contraído 2,5.0E-5,50
+Imune a 2 por ter contraído 2,5.0E-5,51
+Imune a 2 por ter contraído 2,5.0E-5,52
+Imune a 2 por ter contraído 2,0.0,53
 Imune a 2 por ter contraído 2,0.0,54
 Imune a 2 por ter contraído 2,0.0,55
 Imune a 2 por ter contraído 2,0.0,56
@@ -300,38 +300,38 @@ Imune a 2 por ter contraído 2,0.0,98
 Imune a 2 por ter contraído 2,0.0,99
 Imune a 2 por ter contraído 2,0.0,100
 Infectado por 1 / nunca contraiu 2,0.01,1
-Infectado por 1 / nunca contraiu 2,0.014,2
-Infectado por 1 / nunca contraiu 2,0.013925,3
-Infectado por 1 / nunca contraiu 2,0.01245,4
-Infectado por 1 / nunca contraiu 2,0.010225,5
-Infectado por 1 / nunca contraiu 2,0.007225,6
-Infectado por 1 / nunca contraiu 2,0.005625,7
-Infectado por 1 / nunca contraiu 2,0.0042,8
-Infectado por 1 / nunca contraiu 2,0.002875,9
-Infectado por 1 / nunca contraiu 2,0.002025,10
-Infectado por 1 / nunca contraiu 2,0.00135,11
-Infectado por 1 / nunca contraiu 2,0.001,12
-Infectado por 1 / nunca contraiu 2,6.5E-4,13
-Infectado por 1 / nunca contraiu 2,4.5E-4,14
-Infectado por 1 / nunca contraiu 2,2.75E-4,15
-Infectado por 1 / nunca contraiu 2,1.75E-4,16
-Infectado por 1 / nunca contraiu 2,1.75E-4,17
-Infectado por 1 / nunca contraiu 2,7.5E-5,18
+Infectado por 1 / nunca contraiu 2,0.013225,2
+Infectado por 1 / nunca contraiu 2,0.012425,3
+Infectado por 1 / nunca contraiu 2,0.011475,4
+Infectado por 1 / nunca contraiu 2,0.00875,5
+Infectado por 1 / nunca contraiu 2,0.007025,6
+Infectado por 1 / nunca contraiu 2,0.005375,7
+Infectado por 1 / nunca contraiu 2,0.00365,8
+Infectado por 1 / nunca contraiu 2,0.00255,9
+Infectado por 1 / nunca contraiu 2,0.00165,10
+Infectado por 1 / nunca contraiu 2,0.001075,11
+Infectado por 1 / nunca contraiu 2,7.5E-4,12
+Infectado por 1 / nunca contraiu 2,5.75E-4,13
+Infectado por 1 / nunca contraiu 2,4.0E-4,14
+Infectado por 1 / nunca contraiu 2,1.25E-4,15
+Infectado por 1 / nunca contraiu 2,7.5E-5,16
+Infectado por 1 / nunca contraiu 2,7.5E-5,17
+Infectado por 1 / nunca contraiu 2,5.0E-5,18
 Infectado por 1 / nunca contraiu 2,2.5E-5,19
-Infectado por 1 / nunca contraiu 2,0.0,20
-Infectado por 1 / nunca contraiu 2,0.0,21
-Infectado por 1 / nunca contraiu 2,0.0,22
-Infectado por 1 / nunca contraiu 2,0.0,23
-Infectado por 1 / nunca contraiu 2,0.0,24
-Infectado por 1 / nunca contraiu 2,0.0,25
-Infectado por 1 / nunca contraiu 2,0.0,26
-Infectado por 1 / nunca contraiu 2,0.0,27
-Infectado por 1 / nunca contraiu 2,0.0,28
-Infectado por 1 / nunca contraiu 2,0.0,29
-Infectado por 1 / nunca contraiu 2,0.0,30
-Infectado por 1 / nunca contraiu 2,0.0,31
-Infectado por 1 / nunca contraiu 2,0.0,32
-Infectado por 1 / nunca contraiu 2,0.0,33
+Infectado por 1 / nunca contraiu 2,2.5E-5,20
+Infectado por 1 / nunca contraiu 2,2.5E-5,21
+Infectado por 1 / nunca contraiu 2,2.5E-5,22
+Infectado por 1 / nunca contraiu 2,2.5E-5,23
+Infectado por 1 / nunca contraiu 2,2.5E-5,24
+Infectado por 1 / nunca contraiu 2,2.5E-5,25
+Infectado por 1 / nunca contraiu 2,7.5E-5,26
+Infectado por 1 / nunca contraiu 2,5.0E-5,27
+Infectado por 1 / nunca contraiu 2,5.0E-5,28
+Infectado por 1 / nunca contraiu 2,5.0E-5,29
+Infectado por 1 / nunca contraiu 2,2.5E-5,30
+Infectado por 1 / nunca contraiu 2,5.0E-5,31
+Infectado por 1 / nunca contraiu 2,7.5E-5,32
+Infectado por 1 / nunca contraiu 2,2.5E-5,33
 Infectado por 1 / nunca contraiu 2,0.0,34
 Infectado por 1 / nunca contraiu 2,0.0,35
 Infectado por 1 / nunca contraiu 2,0.0,36
@@ -400,97 +400,97 @@ Infectado por 1 / nunca contraiu 2,0.0,98
 Infectado por 1 / nunca contraiu 2,0.0,99
 Infectado por 1 / nunca contraiu 2,0.0,100
 Imune a 1 por ter se vacinado contra 1,0.0,1
-Imune a 1 por ter se vacinado contra 1,0.1954,2
-Imune a 1 por ter se vacinado contra 1,0.351575,3
-Imune a 1 por ter se vacinado contra 1,0.471275,4
-Imune a 1 por ter se vacinado contra 1,0.56825,5
-Imune a 1 por ter se vacinado contra 1,0.647875,6
-Imune a 1 por ter se vacinado contra 1,0.7092,7
-Imune a 1 por ter se vacinado contra 1,0.75915,8
-Imune a 1 por ter se vacinado contra 1,0.80005,9
-Imune a 1 por ter se vacinado contra 1,0.8344,10
-Imune a 1 por ter se vacinado contra 1,0.860675,11
-Imune a 1 por ter se vacinado contra 1,0.882475,12
-Imune a 1 por ter se vacinado contra 1,0.900875,13
-Imune a 1 por ter se vacinado contra 1,0.916825,14
-Imune a 1 por ter se vacinado contra 1,0.92945,15
-Imune a 1 por ter se vacinado contra 1,0.94025,16
-Imune a 1 por ter se vacinado contra 1,0.9487,17
-Imune a 1 por ter se vacinado contra 1,0.9552,18
-Imune a 1 por ter se vacinado contra 1,0.961475,19
-Imune a 1 por ter se vacinado contra 1,0.966225,20
-Imune a 1 por ter se vacinado contra 1,0.97085,21
-Imune a 1 por ter se vacinado contra 1,0.9752,22
-Imune a 1 por ter se vacinado contra 1,0.97845,23
-Imune a 1 por ter se vacinado contra 1,0.981225,24
-Imune a 1 por ter se vacinado contra 1,0.983225,25
-Imune a 1 por ter se vacinado contra 1,0.9848,26
-Imune a 1 por ter se vacinado contra 1,0.986825,27
-Imune a 1 por ter se vacinado contra 1,0.988575,28
-Imune a 1 por ter se vacinado contra 1,0.990025,29
-Imune a 1 por ter se vacinado contra 1,0.99135,30
-Imune a 1 por ter se vacinado contra 1,0.992275,31
-Imune a 1 por ter se vacinado contra 1,0.99315,32
-Imune a 1 por ter se vacinado contra 1,0.9939,33
-Imune a 1 por ter se vacinado contra 1,0.99455,34
-Imune a 1 por ter se vacinado contra 1,0.9951,35
-Imune a 1 por ter se vacinado contra 1,0.9956,36
-Imune a 1 por ter se vacinado contra 1,0.996025,37
-Imune a 1 por ter se vacinado contra 1,0.996325,38
-Imune a 1 por ter se vacinado contra 1,0.99685,39
-Imune a 1 por ter se vacinado contra 1,0.9971,40
-Imune a 1 por ter se vacinado contra 1,0.99745,41
-Imune a 1 por ter se vacinado contra 1,0.9978,42
-Imune a 1 por ter se vacinado contra 1,0.9981,43
-Imune a 1 por ter se vacinado contra 1,0.998425,44
-Imune a 1 por ter se vacinado contra 1,0.998475,45
-Imune a 1 por ter se vacinado contra 1,0.998675,46
-Imune a 1 por ter se vacinado contra 1,0.998775,47
-Imune a 1 por ter se vacinado contra 1,0.99885,48
-Imune a 1 por ter se vacinado contra 1,0.99895,49
-Imune a 1 por ter se vacinado contra 1,0.999,50
-Imune a 1 por ter se vacinado contra 1,0.999075,51
-Imune a 1 por ter se vacinado contra 1,0.999125,52
+Imune a 1 por ter se vacinado contra 1,0.19505,2
+Imune a 1 por ter se vacinado contra 1,0.34825,3
+Imune a 1 por ter se vacinado contra 1,0.470225,4
+Imune a 1 por ter se vacinado contra 1,0.566875,5
+Imune a 1 por ter se vacinado contra 1,0.6491,6
+Imune a 1 por ter se vacinado contra 1,0.713175,7
+Imune a 1 por ter se vacinado contra 1,0.7639,8
+Imune a 1 por ter se vacinado contra 1,0.804975,9
+Imune a 1 por ter se vacinado contra 1,0.836925,10
+Imune a 1 por ter se vacinado contra 1,0.86325,11
+Imune a 1 por ter se vacinado contra 1,0.88615,12
+Imune a 1 por ter se vacinado contra 1,0.90425,13
+Imune a 1 por ter se vacinado contra 1,0.9184,14
+Imune a 1 por ter se vacinado contra 1,0.93035,15
+Imune a 1 por ter se vacinado contra 1,0.941625,16
+Imune a 1 por ter se vacinado contra 1,0.949775,17
+Imune a 1 por ter se vacinado contra 1,0.956825,18
+Imune a 1 por ter se vacinado contra 1,0.96245,19
+Imune a 1 por ter se vacinado contra 1,0.967425,20
+Imune a 1 por ter se vacinado contra 1,0.971925,21
+Imune a 1 por ter se vacinado contra 1,0.975125,22
+Imune a 1 por ter se vacinado contra 1,0.97815,23
+Imune a 1 por ter se vacinado contra 1,0.981175,24
+Imune a 1 por ter se vacinado contra 1,0.98345,25
+Imune a 1 por ter se vacinado contra 1,0.985525,26
+Imune a 1 por ter se vacinado contra 1,0.987175,27
+Imune a 1 por ter se vacinado contra 1,0.988175,28
+Imune a 1 por ter se vacinado contra 1,0.9895,29
+Imune a 1 por ter se vacinado contra 1,0.990775,30
+Imune a 1 por ter se vacinado contra 1,0.99175,31
+Imune a 1 por ter se vacinado contra 1,0.992425,32
+Imune a 1 por ter se vacinado contra 1,0.99305,33
+Imune a 1 por ter se vacinado contra 1,0.993725,34
+Imune a 1 por ter se vacinado contra 1,0.9943,35
+Imune a 1 por ter se vacinado contra 1,0.994825,36
+Imune a 1 por ter se vacinado contra 1,0.995475,37
+Imune a 1 por ter se vacinado contra 1,0.995975,38
+Imune a 1 por ter se vacinado contra 1,0.9965,39
+Imune a 1 por ter se vacinado contra 1,0.99695,40
+Imune a 1 por ter se vacinado contra 1,0.9973,41
+Imune a 1 por ter se vacinado contra 1,0.997475,42
+Imune a 1 por ter se vacinado contra 1,0.9977,43
+Imune a 1 por ter se vacinado contra 1,0.99795,44
+Imune a 1 por ter se vacinado contra 1,0.998125,45
+Imune a 1 por ter se vacinado contra 1,0.99835,46
+Imune a 1 por ter se vacinado contra 1,0.998575,47
+Imune a 1 por ter se vacinado contra 1,0.9987,48
+Imune a 1 por ter se vacinado contra 1,0.9989,49
+Imune a 1 por ter se vacinado contra 1,0.998975,50
+Imune a 1 por ter se vacinado contra 1,0.9991,51
+Imune a 1 por ter se vacinado contra 1,0.999275,52
 Imune a 1 por ter se vacinado contra 1,0.999275,53
-Imune a 1 por ter se vacinado contra 1,0.999375,54
-Imune a 1 por ter se vacinado contra 1,0.999475,55
-Imune a 1 por ter se vacinado contra 1,0.999525,56
-Imune a 1 por ter se vacinado contra 1,0.99955,57
-Imune a 1 por ter se vacinado contra 1,0.99955,58
+Imune a 1 por ter se vacinado contra 1,0.99935,54
+Imune a 1 por ter se vacinado contra 1,0.99945,55
+Imune a 1 por ter se vacinado contra 1,0.999475,56
+Imune a 1 por ter se vacinado contra 1,0.999525,57
+Imune a 1 por ter se vacinado contra 1,0.999525,58
 Imune a 1 por ter se vacinado contra 1,0.999575,59
-Imune a 1 por ter se vacinado contra 1,0.9996,60
-Imune a 1 por ter se vacinado contra 1,0.99965,61
-Imune a 1 por ter se vacinado contra 1,0.999675,62
-Imune a 1 por ter se vacinado contra 1,0.999675,63
-Imune a 1 por ter se vacinado contra 1,0.999675,64
-Imune a 1 por ter se vacinado contra 1,0.999675,65
-Imune a 1 por ter se vacinado contra 1,0.999675,66
-Imune a 1 por ter se vacinado contra 1,0.999675,67
-Imune a 1 por ter se vacinado contra 1,0.999725,68
-Imune a 1 por ter se vacinado contra 1,0.999725,69
-Imune a 1 por ter se vacinado contra 1,0.999825,70
-Imune a 1 por ter se vacinado contra 1,0.99985,71
+Imune a 1 por ter se vacinado contra 1,0.999625,60
+Imune a 1 por ter se vacinado contra 1,0.9997,61
+Imune a 1 por ter se vacinado contra 1,0.99975,62
+Imune a 1 por ter se vacinado contra 1,0.999775,63
+Imune a 1 por ter se vacinado contra 1,0.9998,64
+Imune a 1 por ter se vacinado contra 1,0.99985,65
+Imune a 1 por ter se vacinado contra 1,0.99985,66
+Imune a 1 por ter se vacinado contra 1,0.99985,67
+Imune a 1 por ter se vacinado contra 1,0.999875,68
+Imune a 1 por ter se vacinado contra 1,0.999875,69
+Imune a 1 por ter se vacinado contra 1,0.999875,70
+Imune a 1 por ter se vacinado contra 1,0.999875,71
 Imune a 1 por ter se vacinado contra 1,0.999875,72
 Imune a 1 por ter se vacinado contra 1,0.9999,73
-Imune a 1 por ter se vacinado contra 1,0.999925,74
-Imune a 1 por ter se vacinado contra 1,0.99995,75
-Imune a 1 por ter se vacinado contra 1,0.99995,76
-Imune a 1 por ter se vacinado contra 1,0.99995,77
+Imune a 1 por ter se vacinado contra 1,0.9999,74
+Imune a 1 por ter se vacinado contra 1,0.999925,75
+Imune a 1 por ter se vacinado contra 1,0.999925,76
+Imune a 1 por ter se vacinado contra 1,0.999925,77
 Imune a 1 por ter se vacinado contra 1,0.99995,78
-Imune a 1 por ter se vacinado contra 1,0.99995,79
-Imune a 1 por ter se vacinado contra 1,0.99995,80
-Imune a 1 por ter se vacinado contra 1,0.99995,81
-Imune a 1 por ter se vacinado contra 1,0.99995,82
-Imune a 1 por ter se vacinado contra 1,0.99995,83
-Imune a 1 por ter se vacinado contra 1,0.99995,84
+Imune a 1 por ter se vacinado contra 1,0.999975,79
+Imune a 1 por ter se vacinado contra 1,0.999975,80
+Imune a 1 por ter se vacinado contra 1,0.999975,81
+Imune a 1 por ter se vacinado contra 1,0.999975,82
+Imune a 1 por ter se vacinado contra 1,0.999975,83
+Imune a 1 por ter se vacinado contra 1,0.999975,84
 Imune a 1 por ter se vacinado contra 1,0.999975,85
 Imune a 1 por ter se vacinado contra 1,0.999975,86
 Imune a 1 por ter se vacinado contra 1,0.999975,87
 Imune a 1 por ter se vacinado contra 1,0.999975,88
-Imune a 1 por ter se vacinado contra 1,0.999975,89
-Imune a 1 por ter se vacinado contra 1,0.999975,90
-Imune a 1 por ter se vacinado contra 1,0.999975,91
-Imune a 1 por ter se vacinado contra 1,0.999975,92
+Imune a 1 por ter se vacinado contra 1,1.0,89
+Imune a 1 por ter se vacinado contra 1,1.0,90
+Imune a 1 por ter se vacinado contra 1,1.0,91
+Imune a 1 por ter se vacinado contra 1,1.0,92
 Imune a 1 por ter se vacinado contra 1,1.0,93
 Imune a 1 por ter se vacinado contra 1,1.0,94
 Imune a 1 por ter se vacinado contra 1,1.0,95
@@ -500,97 +500,97 @@ Imune a 1 por ter se vacinado contra 1,1.0,98
 Imune a 1 por ter se vacinado contra 1,1.0,99
 Imune a 1 por ter se vacinado contra 1,1.0,100
 Suscetível as doenças,0.98,1
-Suscetível as doenças,0.7759,2
-Suscetível as doenças,0.614975,3
-Suscetível as doenças,0.4921,4
-Suscetível as doenças,0.393625,5
-Suscetível as doenças,0.314475,6
-Suscetível as doenças,0.254475,7
-Suscetível as doenças,0.206,8
-Suscetível as doenças,0.1676,9
-Suscetível as doenças,0.136025,10
-Suscetível as doenças,0.11215,11
-Suscetível as doenças,0.09255,12
-Suscetível as doenças,0.076425,13
-Suscetível as doenças,0.062475,14
-Suscetível as doenças,0.051775,15
-Suscetível as doenças,0.0426,16
-Suscetível as doenças,0.035875,17
-Suscetível as doenças,0.031075,18
-Suscetível as doenças,0.0264,19
-Suscetível as doenças,0.0228,20
-Suscetível as doenças,0.0195,21
-Suscetível as doenças,0.016175,22
-Suscetível as doenças,0.01365,23
-Suscetível as doenças,0.01175,24
-Suscetível as doenças,0.01045,25
-Suscetível as doenças,0.009675,26
-Suscetível as doenças,0.008125,27
-Suscetível as doenças,0.00705,28
-Suscetível as doenças,0.0061,29
-Suscetível as doenças,0.0051,30
-Suscetível as doenças,0.00445,31
-Suscetível as doenças,0.00385,32
-Suscetível as doenças,0.0033,33
-Suscetível as doenças,0.002825,34
-Suscetível as doenças,0.002425,35
-Suscetível as doenças,0.002225,36
-Suscetível as doenças,0.001975,37
-Suscetível as doenças,0.00195,38
-Suscetível as doenças,0.001675,39
-Suscetível as doenças,0.001575,40
-Suscetível as doenças,0.0013,41
-Suscetível as doenças,0.001075,42
-Suscetível as doenças,9.25E-4,43
-Suscetível as doenças,7.0E-4,44
-Suscetível as doenças,7.0E-4,45
-Suscetível as doenças,5.5E-4,46
-Suscetível as doenças,5.0E-4,47
-Suscetível as doenças,5.25E-4,48
-Suscetível as doenças,4.75E-4,49
-Suscetível as doenças,5.25E-4,50
-Suscetível as doenças,5.0E-4,51
-Suscetível as doenças,5.0E-4,52
+Suscetível as doenças,0.777575,2
+Suscetível as doenças,0.619525,3
+Suscetível as doenças,0.49435,4
+Suscetível as doenças,0.396875,5
+Suscetível as doenças,0.315,6
+Suscetível as doenças,0.251675,7
+Suscetível as doenças,0.203075,8
+Suscetível as doenças,0.16415,9
+Suscetível as doenças,0.13455,10
+Suscetível as doenças,0.11065,11
+Suscetível as doenças,0.089825,12
+Suscetível as doenças,0.074175,13
+Suscetível as doenças,0.062075,14
+Suscetível as doenças,0.05175,15
+Suscetível as doenças,0.04225,16
+Suscetível as doenças,0.03545,17
+Suscetível as doenças,0.029675,18
+Suscetível as doenças,0.0253,19
+Suscetível as doenças,0.021525,20
+Suscetível as doenças,0.018175,21
+Suscetível as doenças,0.0158,22
+Suscetível as doenças,0.013725,23
+Suscetível as doenças,0.0115,24
+Suscetível as doenças,0.00995,25
+Suscetível as doenças,0.008375,26
+Suscetível as doenças,0.00715,27
+Suscetível as doenças,0.0067,28
+Suscetível as doenças,0.00575,29
+Suscetível as doenças,0.004925,30
+Suscetível as doenças,0.0043,31
+Suscetível as doenças,0.00395,32
+Suscetível as doenças,0.00385,33
+Suscetível as doenças,0.003375,34
+Suscetível as doenças,0.003075,35
+Suscetível as doenças,0.00285,36
+Suscetível as doenças,0.002425,37
+Suscetível as doenças,0.002175,38
+Suscetível as doenças,0.0018,39
+Suscetível as doenças,0.001475,40
+Suscetível as doenças,0.001275,41
+Suscetível as doenças,0.0013,42
+Suscetível as doenças,0.00125,43
+Suscetível as doenças,0.001125,44
+Suscetível as doenças,0.0011,45
+Suscetível as doenças,9.25E-4,46
+Suscetível as doenças,7.75E-4,47
+Suscetível as doenças,7.0E-4,48
+Suscetível as doenças,5.0E-4,49
+Suscetível as doenças,5.0E-4,50
+Suscetível as doenças,4.25E-4,51
+Suscetível as doenças,3.0E-4,52
 Suscetível as doenças,3.75E-4,53
-Suscetível as doenças,3.5E-4,54
-Suscetível as doenças,2.75E-4,55
-Suscetível as doenças,2.5E-4,56
-Suscetível as doenças,2.25E-4,57
-Suscetível as doenças,2.5E-4,58
-Suscetível as doenças,2.25E-4,59
-Suscetível as doenças,2.0E-4,60
-Suscetível as doenças,1.75E-4,61
-Suscetível as doenças,1.75E-4,62
-Suscetível as doenças,2.0E-4,63
-Suscetível as doenças,2.0E-4,64
-Suscetível as doenças,2.0E-4,65
-Suscetível as doenças,2.25E-4,66
-Suscetível as doenças,2.5E-4,67
-Suscetível as doenças,2.0E-4,68
-Suscetível as doenças,2.0E-4,69
-Suscetível as doenças,1.0E-4,70
-Suscetível as doenças,1.25E-4,71
-Suscetível as doenças,1.0E-4,72
+Suscetível as doenças,3.25E-4,54
+Suscetível as doenças,2.5E-4,55
+Suscetível as doenças,2.25E-4,56
+Suscetível as doenças,2.0E-4,57
+Suscetível as doenças,2.75E-4,58
+Suscetível as doenças,2.5E-4,59
+Suscetível as doenças,2.25E-4,60
+Suscetível as doenças,1.5E-4,61
+Suscetível as doenças,1.25E-4,62
+Suscetível as doenças,1.0E-4,63
+Suscetível as doenças,1.0E-4,64
+Suscetível as doenças,5.0E-5,65
+Suscetível as doenças,5.0E-5,66
+Suscetível as doenças,5.0E-5,67
+Suscetível as doenças,2.5E-5,68
+Suscetível as doenças,5.0E-5,69
+Suscetível as doenças,5.0E-5,70
+Suscetível as doenças,5.0E-5,71
+Suscetível as doenças,7.5E-5,72
 Suscetível as doenças,7.5E-5,73
-Suscetível as doenças,5.0E-5,74
-Suscetível as doenças,2.5E-5,75
-Suscetível as doenças,2.5E-5,76
-Suscetível as doenças,2.5E-5,77
-Suscetível as doenças,2.5E-5,78
+Suscetível as doenças,7.5E-5,74
+Suscetível as doenças,5.0E-5,75
+Suscetível as doenças,5.0E-5,76
+Suscetível as doenças,7.5E-5,77
+Suscetível as doenças,5.0E-5,78
 Suscetível as doenças,2.5E-5,79
 Suscetível as doenças,2.5E-5,80
 Suscetível as doenças,2.5E-5,81
 Suscetível as doenças,2.5E-5,82
-Suscetível as doenças,5.0E-5,83
-Suscetível as doenças,5.0E-5,84
+Suscetível as doenças,2.5E-5,83
+Suscetível as doenças,2.5E-5,84
 Suscetível as doenças,2.5E-5,85
 Suscetível as doenças,2.5E-5,86
 Suscetível as doenças,2.5E-5,87
 Suscetível as doenças,2.5E-5,88
-Suscetível as doenças,2.5E-5,89
-Suscetível as doenças,2.5E-5,90
-Suscetível as doenças,2.5E-5,91
-Suscetível as doenças,2.5E-5,92
+Suscetível as doenças,0.0,89
+Suscetível as doenças,0.0,90
+Suscetível as doenças,0.0,91
+Suscetível as doenças,0.0,92
 Suscetível as doenças,0.0,93
 Suscetível as doenças,0.0,94
 Suscetível as doenças,0.0,95
@@ -600,87 +600,87 @@ Suscetível as doenças,0.0,98
 Suscetível as doenças,0.0,99
 Suscetível as doenças,0.0,100
 Imune a 1 por ter contraído 1,0.0,1
-Imune a 1 por ter contraído 1,0.00535,2
-Imune a 1 por ter contraído 1,0.010975,3
-Imune a 1 por ter contraído 1,0.0165,4
-Imune a 1 por ter contraído 1,0.0208,5
-Imune a 1 por ter contraído 1,0.023775,6
-Imune a 1 por ter contraído 1,0.0246,7
-Imune a 1 por ter contraído 1,0.02515,8
-Imune a 1 por ter contraído 1,0.024625,9
-Imune a 1 por ter contraído 1,0.02335,10
-Imune a 1 por ter contraído 1,0.021975,11
-Imune a 1 por ter contraído 1,0.02035,12
-Imune a 1 por ter contraído 1,0.0188,13
-Imune a 1 por ter contraído 1,0.01735,14
-Imune a 1 por ter contraído 1,0.0159,15
-Imune a 1 por ter contraído 1,0.01465,16
-Imune a 1 por ter contraído 1,0.013025,17
-Imune a 1 por ter contraído 1,0.011625,18
-Imune a 1 por ter contraído 1,0.010425,19
-Imune a 1 por ter contraído 1,0.00945,20
-Imune a 1 por ter contraído 1,0.0084,21
-Imune a 1 por ter contraído 1,0.00755,22
-Imune a 1 por ter contraído 1,0.0069,23
-Imune a 1 por ter contraído 1,0.006075,24
-Imune a 1 por ter contraído 1,0.00545,25
-Imune a 1 por ter contraído 1,0.00475,26
-Imune a 1 por ter contraído 1,0.004375,27
-Imune a 1 por ter contraído 1,0.0038,28
-Imune a 1 por ter contraído 1,0.003375,29
-Imune a 1 por ter contraído 1,0.003075,30
-Imune a 1 por ter contraído 1,0.0028,31
-Imune a 1 por ter contraído 1,0.00255,32
-Imune a 1 por ter contraído 1,0.002375,33
-Imune a 1 por ter contraído 1,0.0022,34
-Imune a 1 por ter contraído 1,0.00205,35
-Imune a 1 por ter contraído 1,0.00175,36
-Imune a 1 por ter contraído 1,0.001575,37
-Imune a 1 por ter contraído 1,0.00145,38
-Imune a 1 por ter contraído 1,0.001275,39
-Imune a 1 por ter contraído 1,0.00115,40
-Imune a 1 por ter contraído 1,0.001075,41
-Imune a 1 por ter contraído 1,0.001,42
+Imune a 1 por ter contraído 1,0.004675,2
+Imune a 1 por ter contraído 1,0.011225,3
+Imune a 1 por ter contraído 1,0.015925,4
+Imune a 1 por ter contraído 1,0.020325,5
+Imune a 1 por ter contraído 1,0.022425,6
+Imune a 1 por ter contraído 1,0.0241,7
+Imune a 1 por ter contraído 1,0.0243,8
+Imune a 1 por ter contraído 1,0.023675,9
+Imune a 1 por ter contraído 1,0.022725,10
+Imune a 1 por ter contraído 1,0.02115,11
+Imune a 1 por ter contraído 1,0.019675,12
+Imune a 1 por ter contraído 1,0.01775,13
+Imune a 1 por ter contraído 1,0.0162,14
+Imune a 1 por ter contraído 1,0.015125,15
+Imune a 1 por ter contraído 1,0.013675,16
+Imune a 1 por ter contraído 1,0.012375,17
+Imune a 1 por ter contraído 1,0.0114,18
+Imune a 1 por ter contraído 1,0.01035,19
+Imune a 1 por ter contraído 1,0.00935,20
+Imune a 1 por ter contraído 1,0.0085,21
+Imune a 1 por ter contraído 1,0.00775,22
+Imune a 1 por ter contraído 1,0.006875,23
+Imune a 1 por ter contraído 1,0.00615,24
+Imune a 1 por ter contraído 1,0.005575,25
+Imune a 1 por ter contraído 1,0.005125,26
+Imune a 1 por ter contraído 1,0.0048,27
+Imune a 1 por ter contraído 1,0.004325,28
+Imune a 1 por ter contraído 1,0.004,29
+Imune a 1 por ter contraído 1,0.003675,30
+Imune a 1 por ter contraído 1,0.003375,31
+Imune a 1 por ter contraído 1,0.003075,32
+Imune a 1 por ter contraído 1,0.0026,33
+Imune a 1 por ter contraído 1,0.0025,34
+Imune a 1 por ter contraído 1,0.00225,35
+Imune a 1 por ter contraído 1,0.002,36
+Imune a 1 por ter contraído 1,0.0018,37
+Imune a 1 por ter contraído 1,0.001575,38
+Imune a 1 por ter contraído 1,0.001425,39
+Imune a 1 por ter contraído 1,0.001325,40
+Imune a 1 por ter contraído 1,0.0012,41
+Imune a 1 por ter contraído 1,0.001025,42
 Imune a 1 por ter contraído 1,8.75E-4,43
 Imune a 1 por ter contraído 1,7.75E-4,44
-Imune a 1 por ter contraído 1,7.25E-4,45
-Imune a 1 por ter contraído 1,7.0E-4,46
-Imune a 1 por ter contraído 1,6.5E-4,47
-Imune a 1 por ter contraído 1,5.75E-4,48
+Imune a 1 por ter contraído 1,6.5E-4,45
+Imune a 1 por ter contraído 1,6.0E-4,46
+Imune a 1 por ter contraído 1,5.5E-4,47
+Imune a 1 por ter contraído 1,5.25E-4,48
 Imune a 1 por ter contraído 1,5.25E-4,49
 Imune a 1 por ter contraído 1,4.5E-4,50
 Imune a 1 por ter contraído 1,4.0E-4,51
 Imune a 1 por ter contraído 1,3.5E-4,52
 Imune a 1 por ter contraído 1,3.25E-4,53
-Imune a 1 por ter contraído 1,2.75E-4,54
-Imune a 1 por ter contraído 1,2.5E-4,55
-Imune a 1 por ter contraído 1,2.25E-4,56
-Imune a 1 por ter contraído 1,2.25E-4,57
-Imune a 1 por ter contraído 1,2.0E-4,58
-Imune a 1 por ter contraído 1,2.0E-4,59
-Imune a 1 por ter contraído 1,2.0E-4,60
-Imune a 1 por ter contraído 1,1.75E-4,61
-Imune a 1 por ter contraído 1,1.5E-4,62
+Imune a 1 por ter contraído 1,3.0E-4,54
+Imune a 1 por ter contraído 1,2.75E-4,55
+Imune a 1 por ter contraído 1,2.75E-4,56
+Imune a 1 por ter contraído 1,2.5E-4,57
+Imune a 1 por ter contraído 1,1.75E-4,58
+Imune a 1 por ter contraído 1,1.75E-4,59
+Imune a 1 por ter contraído 1,1.5E-4,60
+Imune a 1 por ter contraído 1,1.5E-4,61
+Imune a 1 por ter contraído 1,1.25E-4,62
 Imune a 1 por ter contraído 1,1.25E-4,63
-Imune a 1 por ter contraído 1,1.25E-4,64
-Imune a 1 por ter contraído 1,1.25E-4,65
+Imune a 1 por ter contraído 1,1.0E-4,64
+Imune a 1 por ter contraído 1,1.0E-4,65
 Imune a 1 por ter contraído 1,1.0E-4,66
-Imune a 1 por ter contraído 1,7.5E-5,67
-Imune a 1 por ter contraído 1,7.5E-5,68
+Imune a 1 por ter contraído 1,1.0E-4,67
+Imune a 1 por ter contraído 1,1.0E-4,68
 Imune a 1 por ter contraído 1,7.5E-5,69
 Imune a 1 por ter contraído 1,7.5E-5,70
-Imune a 1 por ter contraído 1,2.5E-5,71
-Imune a 1 por ter contraído 1,2.5E-5,72
+Imune a 1 por ter contraído 1,7.5E-5,71
+Imune a 1 por ter contraído 1,5.0E-5,72
 Imune a 1 por ter contraído 1,2.5E-5,73
 Imune a 1 por ter contraído 1,2.5E-5,74
 Imune a 1 por ter contraído 1,2.5E-5,75
 Imune a 1 por ter contraído 1,2.5E-5,76
-Imune a 1 por ter contraído 1,2.5E-5,77
-Imune a 1 por ter contraído 1,2.5E-5,78
-Imune a 1 por ter contraído 1,2.5E-5,79
-Imune a 1 por ter contraído 1,2.5E-5,80
-Imune a 1 por ter contraído 1,2.5E-5,81
-Imune a 1 por ter contraído 1,2.5E-5,82
+Imune a 1 por ter contraído 1,0.0,77
+Imune a 1 por ter contraído 1,0.0,78
+Imune a 1 por ter contraído 1,0.0,79
+Imune a 1 por ter contraído 1,0.0,80
+Imune a 1 por ter contraído 1,0.0,81
+Imune a 1 por ter contraído 1,0.0,82
 Imune a 1 por ter contraído 1,0.0,83
 Imune a 1 por ter contraído 1,0.0,84
 Imune a 1 por ter contraído 1,0.0,85
@@ -700,63 +700,63 @@ Imune a 1 por ter contraído 1,0.0,98
 Imune a 1 por ter contraído 1,0.0,99
 Imune a 1 por ter contraído 1,0.0,100
 Imune,0.0,1
-Imune,0.002125,2
-Imune,0.002525,3
-Imune,0.00255,4
-Imune,0.00245,5
-Imune,0.002275,6
-Imune,0.00215,7
-Imune,0.00195,8
-Imune,0.00175,9
-Imune,0.001525,10
-Imune,0.001375,11
-Imune,0.0013,12
-Imune,0.00115,13
-Imune,9.5E-4,14
-Imune,8.5E-4,15
-Imune,8.25E-4,16
-Imune,8.25E-4,17
-Imune,7.5E-4,18
-Imune,7.0E-4,19
-Imune,6.5E-4,20
-Imune,4.75E-4,21
-Imune,4.25E-4,22
-Imune,3.75E-4,23
-Imune,3.75E-4,24
-Imune,3.75E-4,25
-Imune,3.25E-4,26
-Imune,2.5E-4,27
-Imune,1.75E-4,28
-Imune,1.5E-4,29
-Imune,1.5E-4,30
-Imune,1.5E-4,31
-Imune,1.5E-4,32
-Imune,1.5E-4,33
-Imune,1.5E-4,34
-Imune,1.5E-4,35
-Imune,1.5E-4,36
-Imune,1.5E-4,37
-Imune,1.0E-4,38
-Imune,5.0E-5,39
-Imune,5.0E-5,40
-Imune,5.0E-5,41
-Imune,2.5E-5,42
-Imune,2.5E-5,43
-Imune,2.5E-5,44
-Imune,2.5E-5,45
-Imune,2.5E-5,46
+Imune,0.001975,2
+Imune,0.002375,3
+Imune,0.00235,4
+Imune,0.002025,5
+Imune,0.001875,6
+Imune,0.00175,7
+Imune,0.001625,8
+Imune,0.001475,9
+Imune,0.00135,10
+Imune,0.001225,11
+Imune,0.001125,12
+Imune,0.001025,13
+Imune,8.75E-4,14
+Imune,7.75E-4,15
+Imune,7.0E-4,16
+Imune,7.0E-4,17
+Imune,5.75E-4,18
+Imune,5.25E-4,19
+Imune,5.0E-4,20
+Imune,3.75E-4,21
+Imune,3.25E-4,22
+Imune,3.0E-4,23
+Imune,2.5E-4,24
+Imune,2.25E-4,25
+Imune,2.0E-4,26
+Imune,1.5E-4,27
+Imune,1.25E-4,28
+Imune,1.0E-4,29
+Imune,1.0E-4,30
+Imune,7.5E-5,31
+Imune,7.5E-5,32
+Imune,7.5E-5,33
+Imune,7.5E-5,34
+Imune,7.5E-5,35
+Imune,7.5E-5,36
+Imune,7.5E-5,37
+Imune,7.5E-5,38
+Imune,7.5E-5,39
+Imune,7.5E-5,40
+Imune,7.5E-5,41
+Imune,5.0E-5,42
+Imune,5.0E-5,43
+Imune,5.0E-5,44
+Imune,5.0E-5,45
+Imune,5.0E-5,46
 Imune,2.5E-5,47
-Imune,0.0,48
-Imune,0.0,49
-Imune,0.0,50
-Imune,0.0,51
-Imune,0.0,52
-Imune,0.0,53
-Imune,0.0,54
-Imune,0.0,55
-Imune,0.0,56
-Imune,0.0,57
-Imune,0.0,58
+Imune,2.5E-5,48
+Imune,2.5E-5,49
+Imune,2.5E-5,50
+Imune,2.5E-5,51
+Imune,2.5E-5,52
+Imune,2.5E-5,53
+Imune,2.5E-5,54
+Imune,2.5E-5,55
+Imune,2.5E-5,56
+Imune,2.5E-5,57
+Imune,2.5E-5,58
 Imune,0.0,59
 Imune,0.0,60
 Imune,0.0,61
