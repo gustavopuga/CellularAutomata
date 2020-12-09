@@ -14,7 +14,7 @@
 
 // set the dimensions and margins of the graph
 var margin = {top: 60, right: 230, bottom: 50, left: 50},
-    width = 1200 - margin.left - margin.right,
+    width = 1300 - margin.left - margin.right,
     height = 750 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
@@ -40,7 +40,7 @@ d3.csv("https://raw.githubusercontent.com/gustavopuga/CellularAutomata/master/vi
   // color palette
   var color = d3.scaleOrdinal()
     .domain(keys)
-    .range(d3.schemeCategory20);
+    .range(["#3366cc", "#dc3912", "#ff9900", "#109618", "#990099", "#0099c6", "#dd4477", "#66aa00", "#b82e2e", "#316395", "#994499", "#22aa99", "#aaaa11", "#6633cc", "#e67300", "#8b0707", "#651067", "#329262", "#5574a6", "#3b3eac"]);
 
   //stack the data?
   var stackedData = d3.stack()
@@ -66,14 +66,14 @@ d3.csv("https://raw.githubusercontent.com/gustavopuga/CellularAutomata/master/vi
       .attr("text-anchor", "end")
       .attr("x", width)
       .attr("y", height+40 )
-      .text("Time (year)");
+      .text("Tempo (gerações)");
 
   // Add Y axis label:
   svg.append("text")
       .attr("text-anchor", "end")
       .attr("x", 0)
       .attr("y", -20 )
-      .text("# %")
+      .text("%População")
       .attr("text-anchor", "start")
 
   // Add Y axis
@@ -186,7 +186,7 @@ d3.csv("https://raw.githubusercontent.com/gustavopuga/CellularAutomata/master/vi
       .data(keys)
       .enter()
       .append("rect")
-        .attr("x", 900)
+        .attr("x", 940)
         .attr("y", function(d,i){ return 10 + i*(size+5)}) // 100 is where the first dot appears. 25 is the distance between dots
         .attr("width", size)
         .attr("height", size)
@@ -199,7 +199,7 @@ d3.csv("https://raw.githubusercontent.com/gustavopuga/CellularAutomata/master/vi
       .data(keys)
       .enter()
       .append("text")
-        .attr("x", 900 + size*1.2)
+        .attr("x", 940 + size*1.2)
         .attr("y", function(d,i){ return 10 + i*(size+5) + (size/2)}) // 100 is where the first dot appears. 25 is the distance between dots
         .style("fill", function(d){ return color(d)})
         .text(function(d){ return d})

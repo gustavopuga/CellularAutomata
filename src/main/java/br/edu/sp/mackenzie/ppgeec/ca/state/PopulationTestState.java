@@ -11,17 +11,17 @@ import java.util.function.Function;
 
 import br.edu.sp.mackenzie.ppgeec.Constants;
 
-public enum PopulationState implements CellularAutomataState {
+public enum PopulationTestState implements CellularAutomataState {
 
 	SUSCEPTIBLE(0, "Suscetível", 0.99), INFECTIOUS(1, "Infectado", 0.01), RECOVERY(2, "Recuperado", 0d);
 
-	private final Map<PopulationState, Map<PopulationState, Collection<Function<Double, Function<Double, Double>>>>> graph = new HashMap<>();
+	private final Map<PopulationTestState, Map<PopulationTestState, Collection<Function<Double, Function<Double, Double>>>>> graph = new HashMap<>();
 
 	private final int value;
 	private final String description;
 	private final Double populationPercentage;
 
-	private PopulationState(int value, String description, Double populationPercentage) {
+	private PopulationTestState(int value, String description, Double populationPercentage) {
 
 		this.value = value;
 		this.description = description;
@@ -39,7 +39,7 @@ public enum PopulationState implements CellularAutomataState {
 			susceptibleInfectiousRules.add(v -> k -> 0.1);
 			susceptibleInfectiousRules.add(v -> k -> 1 - Math.pow(Math.E, -1 * k * v));
 
-			Map<PopulationState, Collection<Function<Double, Function<Double, Double>>>> susceptibleVertex = new LinkedHashMap<>();
+			Map<PopulationTestState, Collection<Function<Double, Function<Double, Double>>>> susceptibleVertex = new LinkedHashMap<>();
 			susceptibleVertex.put(RECOVERY, susceptibleRecoveryRules);
 			susceptibleVertex.put(INFECTIOUS, susceptibleInfectiousRules);
 
@@ -49,14 +49,14 @@ public enum PopulationState implements CellularAutomataState {
 			Collection<Function<Double, Function<Double, Double>>> infectiousSusceptibleRules = new ArrayList<>();
 			infectiousSusceptibleRules.add(v -> k -> 0.3);
 
-			Map<PopulationState, Collection<Function<Double, Function<Double, Double>>>> infectiousVertex = new LinkedHashMap<>();
+			Map<PopulationTestState, Collection<Function<Double, Function<Double, Double>>>> infectiousVertex = new LinkedHashMap<>();
 			infectiousVertex.put(RECOVERY, infectiousRecoveryRules);
 			infectiousVertex.put(SUSCEPTIBLE, infectiousSusceptibleRules);
 
 			Collection<Function<Double, Function<Double, Double>>> recoverySusceptibleRules = new ArrayList<>();
 			recoverySusceptibleRules.add(v -> k -> 0.1);
 
-			Map<PopulationState, Collection<Function<Double, Function<Double, Double>>>> recoveryVertex = new LinkedHashMap<>();
+			Map<PopulationTestState, Collection<Function<Double, Function<Double, Double>>>> recoveryVertex = new LinkedHashMap<>();
 			recoveryVertex.put(SUSCEPTIBLE, recoverySusceptibleRules);
 
 			graph.put(SUSCEPTIBLE, susceptibleVertex);
@@ -82,10 +82,10 @@ public enum PopulationState implements CellularAutomataState {
 		double v = neighborhood.stream().filter(n -> this.equals(n)).count();
 
 		initGraph();
-		Map<PopulationState, Collection<Function<Double, Function<Double, Double>>>> vertexMap = this.graph.get(this);
+		Map<PopulationTestState, Collection<Function<Double, Function<Double, Double>>>> vertexMap = this.graph.get(this);
 
 		Random random = new Random();
-		for (PopulationState state : vertexMap.keySet()) {
+		for (PopulationTestState state : vertexMap.keySet()) {
 
 			Collection<Function<Double, Function<Double, Double>>> rules = vertexMap.get(state);
 			for (Function<Double, Function<Double, Double>> rule : rules) {
@@ -106,7 +106,7 @@ public enum PopulationState implements CellularAutomataState {
 	}
 
 	public static CellularAutomataState get(int value) {
-		for (PopulationState populationState : values()) {
+		for (PopulationTestState populationState : values()) {
 			if (populationState.value == value) {
 				return populationState;
 			}
