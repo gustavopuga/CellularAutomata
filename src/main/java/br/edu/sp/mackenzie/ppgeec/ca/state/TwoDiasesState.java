@@ -141,27 +141,37 @@ public enum TwoDiasesState implements CellularAutomataState {
 		
 		case I1:
 			
-			n = countNeighborByState(neighborhood, I1, I12);
+			if (TwoDiasesState.S.equals(this)) {
+				n = countNeighborByState(neighborhood, I1, I12);
+			}
 			break;
 			
 		case I2:
 			
-			n = countNeighborByState(neighborhood, I2, I21, I);
+			if (TwoDiasesState.S.equals(this)) {
+				n = countNeighborByState(neighborhood, I2, I21, I);
+			}
 			break;
 			
 		case I21:
 			
-			n = countNeighborByState(neighborhood, I2, I21, I);
+			if (TwoDiasesState.R1.equals(this)) {
+				n = countNeighborByState(neighborhood, I2, I21, I);
+			}
 			break;
 			
 		case I12:
 			
-			n = countNeighborByState(neighborhood, I1, I12);
+			if (TwoDiasesState.R2.equals(this)) {
+				n = countNeighborByState(neighborhood, I1, I12);
+			}
 			break;
 		
 		case I:
 			
-			n = countNeighborByState(neighborhood, I2, I21, I);
+			if (TwoDiasesState.V.equals(this)) {
+				n = countNeighborByState(neighborhood, I2, I21, I);
+			}
 			break;
 			
 		default:

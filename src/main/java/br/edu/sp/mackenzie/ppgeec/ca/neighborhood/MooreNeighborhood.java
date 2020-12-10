@@ -26,12 +26,15 @@ public class MooreNeighborhood implements CellularAutomataNeighborhood {
 				List<CellularAutomataState> neighborhood = new ArrayList<>();
 				for (int i = -radius; i <= radius; i++) {
 					for (int j = -radius; j <= radius; j++) {
-						int xNeighborhood = (x + i + columns) % columns;
-						int yNeighborhood = (y + j + rows) % rows;
+						
+						int xNeighborhood = calculateNeighborhoodIndex(columns, x, i);
+						int yNeighborhood = calculateNeighborhoodIndex (rows, y, j);
+
 						if (x != xNeighborhood && yNeighborhood != y) {
 							neighborhood.add(currentGeneration[xNeighborhood][yNeighborhood]);
 						}
 					}
+					
 				}
 
 				CellularAutomataState cell = currentGeneration[x][y];
@@ -41,6 +44,18 @@ public class MooreNeighborhood implements CellularAutomataNeighborhood {
 		}
 
 		return nextGeneration;
+	}
+
+	private int calculateNeighborhoodIndex (int length, int matrixIndex, int radiusIndex) {
+		
+		int index = matrixIndex + radiusIndex;
+		
+		if (index < 0) {
+			index = length + index;
+		} else if (index >= length) {
+			index = index - length;
+		}
+		return index;
 	}
 
 }

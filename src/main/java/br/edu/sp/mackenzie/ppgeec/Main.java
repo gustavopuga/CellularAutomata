@@ -17,6 +17,7 @@ import org.knowm.xchart.XYChartBuilder;
 import org.knowm.xchart.XYSeries.XYSeriesRenderStyle;
 import org.knowm.xchart.style.Styler.ChartTheme;
 import org.knowm.xchart.style.Styler.LegendPosition;
+import org.knowm.xchart.style.markers.SeriesMarkers;
 
 import br.edu.sp.mackenzie.ppgeec.ca.CellularAutomata;
 import br.edu.sp.mackenzie.ppgeec.ca.neighborhood.MooreNeighborhood;
@@ -31,20 +32,21 @@ public class Main {
 
 		// Create Chart
 		XYChart chart = new XYChartBuilder().width(800).height(600).title("Evolução da população no tempo").xAxisTitle("Tempo")
-				.yAxisTitle("População").theme(ChartTheme.Matlab).build();
+				.yAxisTitle("População").theme(ChartTheme.GGPlot2).build();
 
 		// Customize Chart
 		chart.getStyler().setLegendPosition(LegendPosition.OutsideE);
-		chart.getStyler().setLegendVisible(true);
+//		chart.getStyler().setLegendVisible(true);
 		chart.getStyler().setDefaultSeriesRenderStyle(XYSeriesRenderStyle.Line);
-
+//		chart.getStyler().setYAxisMax(1d);
+		
 		double[] xTime = IntStream.rangeClosed(1, generations).asDoubleStream().toArray();
 
 		map.keySet().stream().map(key -> map.get(key));
 		for (CellularAutomataState state : map.keySet()) {
 			if (!excludeStates.contains(state)) {				
 				double[] y = map.get(state).stream().mapToDouble(i -> i / Constants.NORMALIZE).toArray();
-				chart.addSeries(state.getDescription(), xTime, y);
+				chart.addSeries(state.getDescription(), xTime, y).setMarker(SeriesMarkers.NONE);
 			}
 
 		}
@@ -124,12 +126,15 @@ public class Main {
 		
 		XYChart chart1 = getChart(map, Constants.TIME, excludeStates1);
 		XYChart chart2 = getChart(map, Constants.TIME, excludeStates2);
+		XYChart chart3 = getChart(map, Constants.TIME, new HashSet<CellularAutomataState>());
 		
 		new SwingWrapper<XYChart>(chart1).displayChart();
 		new SwingWrapper<XYChart>(chart2).displayChart();
+		new SwingWrapper<XYChart>(chart3).displayChart();
 
 		BitmapEncoder.saveBitmap(chart1, "./grafico1", BitmapFormat.PNG);
 		BitmapEncoder.saveBitmap(chart2, "./grafico2", BitmapFormat.PNG);
+		BitmapEncoder.saveBitmap(chart3, "./grafico3", BitmapFormat.PNG);
 
 		/*
 		 * BitmapEncoder.saveBitmapWithDPI(chart, "./Sarampo_Chart_300_DPI",

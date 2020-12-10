@@ -8,7 +8,6 @@ public interface Probabilities {
 	public final double K4 = 1;
 	public final double K5 = 1;
 	
-	
 	// CURA
 	public final double BETA1 = 0.5;
 	public final double BETA2 = 0.5;

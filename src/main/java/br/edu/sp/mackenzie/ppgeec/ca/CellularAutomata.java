@@ -73,7 +73,7 @@ public class CellularAutomata {
 
 	private void nextGeneration() {
 
-		this.generations.add(this.currentGeneration);
+		this.getGenerations().add(this.currentGeneration);
 		currentGeneration = neighborhood.goToNextGeneration(currentGeneration);
 	}
 
@@ -91,7 +91,7 @@ public class CellularAutomata {
 			map.put(cellularAutomataState, new ArrayList<>());
 		}
 
-		for (CellularAutomataState[][] cellularAutomataStates : generations) {
+		for (CellularAutomataState[][] cellularAutomataStates : getGenerations()) {
 
 			Map<CellularAutomataState, Double> mapCount = new HashMap<>();
 			for (CellularAutomataState cellularAutomataState : this.values) {
@@ -101,7 +101,7 @@ public class CellularAutomata {
 			for (int x = 0; x < columns; x++) {
 				for (int y = 0; y < rows; y++) {
 					CellularAutomataState state = cellularAutomataStates[x][y];
-					Double count = mapCount.get(state);
+					Double count = mapCount.getOrDefault(state, 0d);
 					mapCount.put(state, ++count);
 				}
 			}
@@ -114,4 +114,9 @@ public class CellularAutomata {
 
 		return map;
 	}
+
+	public List<CellularAutomataState[][]> getGenerations() {
+		return generations;
+	}
+	
 }
