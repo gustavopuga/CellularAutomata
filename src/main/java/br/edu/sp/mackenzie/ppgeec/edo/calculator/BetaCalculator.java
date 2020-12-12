@@ -1,4 +1,4 @@
-package br.edu.sp.mackenzie.ppgeec;
+package br.edu.sp.mackenzie.ppgeec.edo.calculator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +36,8 @@ public class BetaCalculator {
 
 			
 			double d = i1;
-			double a1 = (delta == 0 && d == 0) ? 0 : (delta / d);
-			values.add(a1);
+			double b1 = (delta == 0 && d == 0) ? 0 : (delta / d);
+			values.add(b1);
 
 		}
 
@@ -72,8 +72,8 @@ public class BetaCalculator {
 			}
 
 			double d = i2;
-			double a2 = (delta == 0 && d == 0) ? 0 : (delta / d);
-			values.add(a2);
+			double b2 = (delta == 0 && d == 0) ? 0 : (delta / d);
+			values.add(b2);
 
 		}
 
@@ -110,8 +110,8 @@ public class BetaCalculator {
 			}
 
 			double d = i;
-			double alfa = (delta == 0 && d == 0) ? 0 : (delta / d);
-			values.add(alfa);
+			double beta = (delta == 0 && d == 0) ? 0 : (delta / d);
+			values.add(beta);
 
 		}
 
@@ -148,8 +148,8 @@ public class BetaCalculator {
 			}
 
 			double d = i12;
-			double alfa1 = (delta == 0 && d == 0) ? 0 : (delta / d);
-			values.add(alfa1);
+			double beta1 = (delta == 0 && d == 0) ? 0 : (delta / d);
+			values.add(beta1);
 
 		}
 
@@ -185,8 +185,8 @@ public class BetaCalculator {
 			}
 
 			double d = i21;
-			double alfa2 = (delta == 0 && d == 0) ? 0 : (delta / d);
-			values.add(alfa2);
+			double beta2 = (delta == 0 && d == 0) ? 0 : (delta / d);
+			values.add(beta2);
 
 		}
 

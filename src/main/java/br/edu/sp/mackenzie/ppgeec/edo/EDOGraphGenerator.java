@@ -1,4 +1,4 @@
-package br.edu.sp.mackenzie.ppgeec;
+package br.edu.sp.mackenzie.ppgeec.edo;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,6 +15,7 @@ import org.knowm.xchart.style.Styler.ChartTheme;
 import org.knowm.xchart.style.Styler.LegendPosition;
 import org.knowm.xchart.style.markers.SeriesMarkers;
 
+import br.edu.sp.mackenzie.ppgeec.Constants;
 import br.edu.sp.mackenzie.ppgeec.ca.state.Probabilities;
 import br.edu.sp.mackenzie.ppgeec.ca.state.TwoDiasesState;
 
@@ -105,8 +106,8 @@ public class EDOGraphGenerator {
 			double r = rValues.get(z);
 			double v = vValues.get(z);
 
-			sValues.add(s + (STEP * ((-A1 * (i1 + i12)) - (A2 * (i2 + i21 + i)) + (C1 * i1) + (C2 * i2) + (GAMMA1 * i12)
-					+ (GAMMA2 * i21) + (GAMMA * i) + (E * v) + (EPSLON * r) - (V * s))));
+			sValues.add(s + (STEP * ((-A1 * s * (i1 + i12)) - (A2 * s *(i2 + i21 + i)) + (C1 * i1) + (C2 * i2) + (GAMMA1 * i12)
+					+ (GAMMA2 * i21) + (GAMMA * i) + (E1*r1) + (E2*r2) + (E * v) + (EPSLON * r) - (V * s))));
 
 			i1Values.add(i1 + (STEP * ((A1 * s * (i1 + i12)) - (B1 * i1) - (C1 * i1))));
 
@@ -168,6 +169,20 @@ public class EDOGraphGenerator {
 		BitmapEncoder.saveBitmap(chart1, "./edo_grafico1", BitmapFormat.PNG);
 		BitmapEncoder.saveBitmap(chart2, "./edo_grafico2", BitmapFormat.PNG);
 
+		System.out.println("");
+		System.out.println(" ================= VARIAVEIS EDO ========================== ");
+		System.out.println("");
+		System.out.println("S = " + sValues.get(sValues.size()-1));
+		System.out.println("I1 = " + i1Values.get(i1Values.size()-1));
+		System.out.println("I2 = " + + i2Values.get(i2Values.size()-1));
+		System.out.println("I12 = " + + i12Values.get(i12Values.size()-1));
+		System.out.println("I21 = " + + i21Values.get(i21Values.size()-1));
+		System.out.println("I = " + + iValues.get(iValues.size()-1));
+		System.out.println("R1 = " + + r1Values.get(r1Values.size()-1));
+		System.out.println("R2 = " + + r2Values.get(r2Values.size()-1));
+		System.out.println("R = " + + rValues.get(rValues.size()-1));
+		System.out.println("V = " + + vValues.get(vValues.size()-1));
+		
 	}
 
 	private XYChart buildXYChart() {

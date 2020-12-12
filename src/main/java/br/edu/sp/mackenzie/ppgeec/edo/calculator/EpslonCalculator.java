@@ -1,4 +1,4 @@
-package br.edu.sp.mackenzie.ppgeec;
+package br.edu.sp.mackenzie.ppgeec.edo.calculator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +36,8 @@ public class EpslonCalculator {
 			}
 
 			double d = i1;
-			double a1 = (delta == 0 && d == 0) ? 0 : (delta / d);
-			values.add(a1);
+			double e1 = (delta == 0 && d == 0) ? 0 : (delta / d);
+			values.add(e1);
 
 		}
 
@@ -72,8 +72,8 @@ public class EpslonCalculator {
 			}
 
 			double d = i2;
-			double a2 = (delta == 0 && d == 0) ? 0 : (delta / d);
-			values.add(a2);
+			double e2 = (delta == 0 && d == 0) ? 0 : (delta / d);
+			values.add(e2);
 
 		}
 
@@ -110,8 +110,8 @@ public class EpslonCalculator {
 			}
 
 			double d = i;
-			double alfa = (delta == 0 && d == 0) ? 0 : (delta / d);
-			values.add(alfa);
+			double e = (delta == 0 && d == 0) ? 0 : (delta / d);
+			values.add(e);
 
 		}
 
@@ -148,8 +148,8 @@ public class EpslonCalculator {
 			}
 
 			double d = i12;
-			double alfa1 = (delta == 0 && d == 0) ? 0 : (delta / d);
-			values.add(alfa1);
+			double epslon = (delta == 0 && d == 0) ? 0 : (delta / d);
+			values.add(epslon);
 
 		}
 
@@ -185,8 +185,8 @@ public class EpslonCalculator {
 			}
 
 			double d = i21;
-			double alfa2 = (delta == 0 && d == 0) ? 0 : (delta / d);
-			values.add(alfa2);
+			double upslon = (delta == 0 && d == 0) ? 0 : (delta / d);
+			values.add(upslon);
 
 		}
 

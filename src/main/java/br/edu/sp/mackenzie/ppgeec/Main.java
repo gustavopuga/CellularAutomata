@@ -28,6 +28,12 @@ import br.edu.sp.mackenzie.ppgeec.ca.state.CellularAutomataState;
 import br.edu.sp.mackenzie.ppgeec.ca.state.TwoDiasesState;
 import br.edu.sp.mackenzie.ppgeec.csv.CSVChart1;
 import br.edu.sp.mackenzie.ppgeec.csv.CSVUtils;
+import br.edu.sp.mackenzie.ppgeec.edo.EDOGraphGenerator;
+import br.edu.sp.mackenzie.ppgeec.edo.calculator.AlfaCalculator;
+import br.edu.sp.mackenzie.ppgeec.edo.calculator.BetaCalculator;
+import br.edu.sp.mackenzie.ppgeec.edo.calculator.EpslonCalculator;
+import br.edu.sp.mackenzie.ppgeec.edo.calculator.GammaCalculator;
+import br.edu.sp.mackenzie.ppgeec.edo.calculator.VariablesCalculator;
 
 public class Main {
 
@@ -105,7 +111,7 @@ public class Main {
 		Map<CellularAutomataState, List<Double>> map = ca.generateGenerationsStateMap();
 		
 		List<CellularAutomataState[][]> generations = ca.getGenerations();
-		int lastGenerations = 20;
+		int lastGenerations = Constants.TIME;
 		toCSV(map);
 		
 		double a1 = AlfaCalculator.getA1(generations, lastGenerations);
@@ -138,6 +144,21 @@ public class Main {
 		System.out.println("Epslon = " + EpslonCalculator.getEpslon(generations, lastGenerations));
 		System.out.println("V = " + EpslonCalculator.getUpslon(generations, lastGenerations));
 
+		System.out.println("");
+		System.out.println(" ================= VARIAVEIS AC ========================== ");
+		System.out.println("");
+		System.out.println("S = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.S));
+		System.out.println("I1 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.I1));
+		System.out.println("I2 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.I2));
+		System.out.println("I12 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.I12));
+		System.out.println("I21 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.I21));
+		System.out.println("I = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.I));
+		System.out.println("R1 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.R1));
+		System.out.println("R2 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.R2));
+		System.out.println("R = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.R));
+		System.out.println("V = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.V));
+
+		
 //		XYChart chart = getChart(map, Constants.TIME);
 //		new SwingWrapper<XYChart>(chart).displayChart();
 
