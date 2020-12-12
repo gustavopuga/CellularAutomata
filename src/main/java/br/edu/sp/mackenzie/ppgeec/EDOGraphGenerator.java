@@ -22,17 +22,17 @@ public class EDOGraphGenerator {
 
 	private final double STEP = 0.01;
 
-	private List<Double> t = new ArrayList<>();
-	private List<Double> s = new ArrayList<>();
-	private List<Double> i1 = new ArrayList<>();
-	private List<Double> i2 = new ArrayList<>();
-	private List<Double> i12 = new ArrayList<>();
-	private List<Double> i21 = new ArrayList<>();
-	private List<Double> i = new ArrayList<>();
-	private List<Double> r1 = new ArrayList<>();
-	private List<Double> r2 = new ArrayList<>();
-	private List<Double> r = new ArrayList<>();
-	private List<Double> v = new ArrayList<>();
+	private List<Double> tValues = new ArrayList<>();
+	private List<Double> sValues = new ArrayList<>();
+	private List<Double> i1Values = new ArrayList<>();
+	private List<Double> i2Values = new ArrayList<>();
+	private List<Double> i12Values = new ArrayList<>();
+	private List<Double> i21Values = new ArrayList<>();
+	private List<Double> iValues = new ArrayList<>();
+	private List<Double> r1Values = new ArrayList<>();
+	private List<Double> r2Values = new ArrayList<>();
+	private List<Double> rValues = new ArrayList<>();
+	private List<Double> vValues = new ArrayList<>();
 
 	private double ALFA1;
 	private double ALFA2;
@@ -78,43 +78,55 @@ public class EDOGraphGenerator {
 
 	private void getEquations() {
 
-		s.add(TwoDiasesState.S.getPercentage());
-		i1.add(TwoDiasesState.I1.getPercentage());
-		i2.add(TwoDiasesState.I2.getPercentage());
-		i12.add(TwoDiasesState.I12.getPercentage());
-		i21.add(TwoDiasesState.I21.getPercentage());
-		i.add(TwoDiasesState.I.getPercentage());
-		r1.add(TwoDiasesState.R1.getPercentage());
-		r2.add(TwoDiasesState.R2.getPercentage());
-		r.add(TwoDiasesState.R.getPercentage());
-		v.add(TwoDiasesState.V.getPercentage());
+		sValues.add(TwoDiasesState.S.getPercentage());
+		i1Values.add(TwoDiasesState.I1.getPercentage());
+		i2Values.add(TwoDiasesState.I2.getPercentage());
+		i12Values.add(TwoDiasesState.I12.getPercentage());
+		i21Values.add(TwoDiasesState.I21.getPercentage());
+		iValues.add(TwoDiasesState.I.getPercentage());
+		r1Values.add(TwoDiasesState.R1.getPercentage());
+		r2Values.add(TwoDiasesState.R2.getPercentage());
+		rValues.add(TwoDiasesState.R.getPercentage());
+		vValues.add(TwoDiasesState.V.getPercentage());
+		tValues.add(0d);
 
-		for (int j = 1; j < Constants.TIME; j++) {
+		int time = Constants.TIME*100;
+		for (int j = 1; j < time; j++) {
 
 			int z = j - 1;
-			s.add((s.get(z) + STEP) * ((-A1 * (i1.get(z) + i12.get(z))) - (A2 * (i2.get(z) + i21.get(z) + i.get(z)))
-					+ (C1 * i1.get(z)) + (C2 * i2.get(z)) + (GAMMA1 * i12.get(z)) + (GAMMA2 * i21.get(z))
-					+ (GAMMA * i.get(z)) + (E * v.get(z)) + (EPSLON * r.get(z) - (V * s.get(z)))));
+			double s = sValues.get(z);
+			double i1 = i1Values.get(z);
+			double i12 = i12Values.get(z);
+			double i2 = i2Values.get(z);
+			double i21 = i21Values.get(z);
+			double i = iValues.get(z);
+			double r1 = r1Values.get(z);
+			double r2 = r2Values.get(z);
+			double r = rValues.get(z);
+			double v = vValues.get(z);
 
-			i1.add((i1.get(z) + STEP) * ((A1 * s.get(z) * (i1.get(z) + i12.get(z))) - (B1 * i1.get(z)) - (C1 * i1.get(z))));
+			sValues.add(s + (STEP * ((-A1 * (i1 + i12)) - (A2 * (i2 + i21 + i)) + (C1 * i1) + (C2 * i2) + (GAMMA1 * i12)
+					+ (GAMMA2 * i21) + (GAMMA * i) + (E * v) + (EPSLON * r) - (V * s))));
 
-			i2.add((i2.get(z) + STEP) * ((A2 * s.get(z) * (i2.get(z) + i21.get(z) + i.get(z))) - (B2 * i2.get(z)) - (C2 * i2.get(z))));
+			i1Values.add(i1 + (STEP * ((A1 * s * (i1 + i12)) - (B1 * i1) - (C1 * i1))));
 
-			i12.add((i12.get(z) + STEP) * ((ALFA1 * r2.get(z) * (i1.get(z) + i12.get(z))) - (BETA1 * i12.get(z)) - (GAMMA1 * i12.get(z))));
+			i2Values.add(i2 + (STEP * ((A2 * s * (i2 + i21 + i)) - (B2 * i2) - (C2 * i2))));
 
-			i21.add((i21.get(z) + STEP) * ((ALFA2 * r1.get(z) * (i2.get(z) + i21.get(z) + i.get(z))) - (BETA2 * i21.get(z)) - (GAMMA2 * i21.get(z))));
+			i12Values.add(i12 + (STEP * ((ALFA1 * r2 * (i1 + i12)) - (BETA1 * i12) - (GAMMA1 * i12))));
 
-			i.add((i.get(z) + STEP) * ((ALFA * v.get(z) * (i2.get(z) + i21.get(z) + i.get(z))) - (BETA * i.get(z)) - (GAMMA * i.get(z))));
+			i21Values.add(i21 + (STEP * ((ALFA2 * r1 * (i2 + i21 + i)) - (BETA2 * i21) - (GAMMA2 * i21))));
 
-			r1.add((r1.get(z) + STEP) * ((-ALFA2 * r1.get(z) * (i2.get(z) + i21.get(z) + i.get(z))) + (B1 * i1.get(z)) - (E1 * r1.get(z))));
+			iValues.add(i + (STEP * ((ALFA * v * (i2 + i21 + i)) - (BETA * i) - (GAMMA * i))));
 
-			r2.add((r2.get(z) + STEP) * ((-ALFA1 * r2.get(z) * (i1.get(z) + i12.get(z))) + (B2 * i2.get(z)) - (E2 * r2.get(z))));
+			r1Values.add(r1 + (STEP * ((-ALFA2 * r1 * (i2 + i21 + i)) + (B1 * i1) - (E1 * r1))));
 
-			r.add((r.get(z) + STEP) * ((BETA1 * i12.get(z)) + (BETA2 * i21.get(z)) + (BETA * i.get(z)) - (EPSLON * r.get(z))));
+			r2Values.add(r2 + (STEP * ((-ALFA1 * r2 * (i1 + i12)) + (B2 * i2) - (E2 * r2))));
 
-			v.add((v.get(z) + STEP) * ((-ALFA * v.get(z)* (i2.get(z) + i21.get(z) + i.get(z))) - (E * v.get(z)) + (V * s.get(z))));
-			
-			t.add(z * STEP);
+			rValues.add(r + (STEP * ((BETA1 * i12) + (BETA2 * i21) + (BETA * i) - (EPSLON * r))));
+
+			vValues.add(v + (STEP * ((-ALFA * v * (i2 + i21 + i)) - (E * v) + (V * s))));
+
+			tValues.add(z * STEP);
 
 		}
 
@@ -123,18 +135,18 @@ public class EDOGraphGenerator {
 	public void generateChart() throws IOException {
 
 		getEquations();
-		double[] xTime = s.stream().mapToDouble(x -> x).toArray();
+		double[] xTime = tValues.stream().mapToDouble(x -> x).toArray();
 
-		double[] arrayS = s.stream().mapToDouble(x -> x).toArray();
-		double[] arrayI1 = i1.stream().mapToDouble(x -> x).toArray();
-		double[] arrayI2 = i2.stream().mapToDouble(x -> x).toArray();
-		double[] arrayI12 = i12.stream().mapToDouble(x -> x).toArray();
-		double[] arrayI21 = i21.stream().mapToDouble(x -> x).toArray();
-		double[] arrayI = i.stream().mapToDouble(x -> x).toArray();
-		double[] arrayR1 = r1.stream().mapToDouble(x -> x).toArray();
-		double[] arrayR2 = r2.stream().mapToDouble(x -> x).toArray();
-		double[] arrayR = r.stream().mapToDouble(x -> x).toArray();
-		double[] arrayV = v.stream().mapToDouble(x -> x).toArray();
+		double[] arrayS = sValues.stream().mapToDouble(x -> x).toArray();
+		double[] arrayI1 = i1Values.stream().mapToDouble(x -> x).toArray();
+		double[] arrayI2 = i2Values.stream().mapToDouble(x -> x).toArray();
+		double[] arrayI12 = i12Values.stream().mapToDouble(x -> x).toArray();
+		double[] arrayI21 = i21Values.stream().mapToDouble(x -> x).toArray();
+		double[] arrayI = iValues.stream().mapToDouble(x -> x).toArray();
+		double[] arrayR1 = r1Values.stream().mapToDouble(x -> x).toArray();
+		double[] arrayR2 = r2Values.stream().mapToDouble(x -> x).toArray();
+		double[] arrayR = rValues.stream().mapToDouble(x -> x).toArray();
+		double[] arrayV = vValues.stream().mapToDouble(x -> x).toArray();
 
 		XYChart chart1 = buildXYChart();
 		chart1.addSeries(TwoDiasesState.I1.getDescription(), xTime, arrayI1).setMarker(SeriesMarkers.NONE);
@@ -142,20 +154,20 @@ public class EDOGraphGenerator {
 		chart1.addSeries(TwoDiasesState.I12.getDescription(), xTime, arrayI12).setMarker(SeriesMarkers.NONE);
 		chart1.addSeries(TwoDiasesState.I21.getDescription(), xTime, arrayI21).setMarker(SeriesMarkers.NONE);
 		chart1.addSeries(TwoDiasesState.I.getDescription(), xTime, arrayI).setMarker(SeriesMarkers.NONE);
-		
+
 		XYChart chart2 = buildXYChart();
 		chart2.addSeries(TwoDiasesState.S.getDescription(), xTime, arrayS).setMarker(SeriesMarkers.NONE);
 		chart2.addSeries(TwoDiasesState.R1.getDescription(), xTime, arrayR1).setMarker(SeriesMarkers.NONE);
 		chart2.addSeries(TwoDiasesState.R2.getDescription(), xTime, arrayR2).setMarker(SeriesMarkers.NONE);
 		chart2.addSeries(TwoDiasesState.R.getDescription(), xTime, arrayR).setMarker(SeriesMarkers.NONE);
 		chart2.addSeries(TwoDiasesState.V.getDescription(), xTime, arrayV).setMarker(SeriesMarkers.NONE);
-		
+
 		new SwingWrapper<XYChart>(chart1).displayChart();
 		new SwingWrapper<XYChart>(chart2).displayChart();
-		
+
 		BitmapEncoder.saveBitmap(chart1, "./edo_grafico1", BitmapFormat.PNG);
 		BitmapEncoder.saveBitmap(chart2, "./edo_grafico2", BitmapFormat.PNG);
-		
+
 	}
 
 	private XYChart buildXYChart() {
