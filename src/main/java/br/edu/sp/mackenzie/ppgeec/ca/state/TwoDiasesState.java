@@ -8,6 +8,7 @@ import java.util.Random;
 import java.util.function.Function;
 
 import br.edu.sp.mackenzie.ppgeec.Constants;
+import br.edu.sp.mackenzie.ppgeec.ca.util.KCalculator;
 
 public enum TwoDiasesState implements CellularAutomataState {
 	
@@ -42,8 +43,8 @@ public enum TwoDiasesState implements CellularAutomataState {
 			// S
 			Map<TwoDiasesState, Function<Double, Double>> sVertex = new LinkedHashMap<>();
 			sVertex.put(V, n -> Probabilities.V);
-			sVertex.put(I1, n -> 1 - Math.pow(Math.E, -1 * Probabilities.K1 * n));
-			sVertex.put(I2, n -> 1 - Math.pow(Math.E, -1 * Probabilities.K2 * n));
+			sVertex.put(I1, n -> 1 - Math.pow(Math.E, -1 * KCalculator.getK1(n) * n));
+			sVertex.put(I2, n -> 1 - Math.pow(Math.E, -1 * KCalculator.getK2(n) * n));
 	
 			// I1
 			Map<TwoDiasesState, Function<Double, Double>> i1Vertex = new LinkedHashMap<>();
@@ -53,12 +54,12 @@ public enum TwoDiasesState implements CellularAutomataState {
 			// I12
 			Map<TwoDiasesState, Function<Double, Double>> i12Vertex = new LinkedHashMap<>();
 			i12Vertex.put(R, n -> Probabilities.BETA1);
-			i12Vertex.put(S, n -> Probabilities.R1);
+			i12Vertex.put(S, n -> Probabilities.GAMMA1);
 	
 			// I21
 			Map<TwoDiasesState, Function<Double, Double>> i21Vertex = new LinkedHashMap<>();
 			i21Vertex.put(R, n -> Probabilities.BETA2);
-			i21Vertex.put(S, n -> Probabilities.R2);
+			i21Vertex.put(S, n -> Probabilities.GAMMA2);
 	
 			// I2
 			Map<TwoDiasesState, Function<Double, Double>> i2Vertex = new LinkedHashMap<>();
@@ -68,17 +69,17 @@ public enum TwoDiasesState implements CellularAutomataState {
 			// I
 			Map<TwoDiasesState, Function<Double,  Double>> iVertex = new LinkedHashMap<>();
 			iVertex.put(R, n -> Probabilities.BETA);
-			iVertex.put(S, n -> Probabilities.GAMA);
+			iVertex.put(S, n -> Probabilities.GAMMA);
 	
 			// R1
 			Map<TwoDiasesState, Function<Double, Double>> r1Vertex = new LinkedHashMap<>();
 			r1Vertex.put(S, n -> Probabilities.E1);
-			r1Vertex.put(I21, n -> 1 - Math.pow(Math.E, -1 * Probabilities.K4 * n));
+			r1Vertex.put(I21, n -> 1 - Math.pow(Math.E, -1 * KCalculator.getK4(n) * n));
 	
 			// R2
 			Map<TwoDiasesState, Function<Double, Double>> r2Vertex = new LinkedHashMap<>();
 			r2Vertex.put(S, n -> Probabilities.E2);
-			r2Vertex.put(I12, n -> 1 - Math.pow(Math.E, -1 * Probabilities.K3 * n));
+			r2Vertex.put(I12, n -> 1 - Math.pow(Math.E, -1 * KCalculator.getK3(n) * n));
 			
 			// R
 			Map<TwoDiasesState, Function<Double, Double>> rVertex = new LinkedHashMap<>();
@@ -86,8 +87,8 @@ public enum TwoDiasesState implements CellularAutomataState {
 	
 			// V
 			Map<TwoDiasesState, Function<Double, Double>> vVertex = new LinkedHashMap<>();
-			rVertex.put(S, n -> Probabilities.E);
-			rVertex.put(I, n -> 1 - Math.pow(Math.E, -1 * Probabilities.K5 * n));
+			vVertex.put(S, n -> Probabilities.E);
+			vVertex.put(I, n -> 1 - Math.pow(Math.E, -1 * KCalculator.getK5(n) * n));
 	
 			// GRAPH
 			graph.put(S, sVertex);

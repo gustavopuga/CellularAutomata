@@ -20,10 +20,10 @@ public interface Probabilities {
 	public final double C1 = 0.3;
 	public final double C2 = 0.3;
 	
-	public final double R1 = 0.3;
-	public final double R2 = 0.3;
+	public final double GAMMA1 = 0.3;
+	public final double GAMMA2 = 0.3;
 	
-	public final double GAMA = 0.3;
+	public final double GAMMA = 0.3;
 
 	// MORTE OUTRAS CAUSAS
 	public final double E = 0.1;
@@ -33,6 +33,6 @@ public interface Probabilities {
 	public final double EPSLON = 0.1;
 
 	// VACINA
-	public final double V = 0;
+	public final double V = 0.05;
 	
 }

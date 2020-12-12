@@ -7,4 +7,5 @@ public class Constants {
     public final static int ROWS = 200;
     public final static long NORMALIZE = COLUMNS * ROWS;
     public final static int TIME = 300;
+    public final static int RADIUS = 1;
 }

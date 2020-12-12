@@ -1,6 +1,8 @@
 package br.edu.sp.mackenzie.ppgeec;
 
 import java.io.IOException;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -9,6 +11,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.IntStream;
 
+import org.apache.commons.lang3.time.DurationFormatUtils;
 import org.knowm.xchart.BitmapEncoder;
 import org.knowm.xchart.BitmapEncoder.BitmapFormat;
 import org.knowm.xchart.SwingWrapper;
@@ -35,8 +38,8 @@ public class Main {
 				.yAxisTitle("População").theme(ChartTheme.GGPlot2).build();
 
 		// Customize Chart
-		chart.getStyler().setLegendPosition(LegendPosition.OutsideE);
-//		chart.getStyler().setLegendVisible(true);
+		chart.getStyler().setLegendPosition(LegendPosition.OutsideS);
+		chart.getStyler().setLegendVisible(true);
 		chart.getStyler().setDefaultSeriesRenderStyle(XYSeriesRenderStyle.Line);
 //		chart.getStyler().setYAxisMax(1d);
 		
@@ -91,20 +94,49 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 
-		CellularAutomata ca = new CellularAutomata(Constants.COLUMNS, Constants.ROWS, new MooreNeighborhood(1),
+		Instant start = Instant.now();
+		CellularAutomata ca = new CellularAutomata(Constants.COLUMNS, Constants.ROWS, new MooreNeighborhood(Constants.RADIUS),
 				TwoDiasesState.class);
 		ca.nextGeneration(Constants.TIME);
+		Instant end = Instant.now();
+		Duration between = Duration.between(start, end);
+		System.out.println("Tempo de simulação: " + DurationFormatUtils.formatDuration(between.toMillis(), "HH:mm:sss"));
 
 		Map<CellularAutomataState, List<Double>> map = ca.generateGenerationsStateMap();
 		
 		List<CellularAutomataState[][]> generations = ca.getGenerations();
 		int lastGenerations = 20;
 		toCSV(map);
-		System.out.println("A1 = " + AlfaCalculator.getA1(generations, lastGenerations));
-		System.out.println("A2 = " + AlfaCalculator.getA2(generations, lastGenerations));
-		System.out.println("Alfa = " + AlfaCalculator.getAlfa(generations, lastGenerations));
-		System.out.println("Alfa1 = " + AlfaCalculator.getAlfa1(generations, lastGenerations));
-		System.out.println("Alfa2 = " + AlfaCalculator.getAlfa2(generations, lastGenerations));
+		
+		double a1 = AlfaCalculator.getA1(generations, lastGenerations);
+		double a2 = AlfaCalculator.getA2(generations, lastGenerations);
+		double alfa = AlfaCalculator.getAlfa(generations, lastGenerations);
+		double alfa1 = AlfaCalculator.getAlfa1(generations, lastGenerations);
+		double alfa2 = AlfaCalculator.getAlfa2(generations, lastGenerations);
+
+		System.out.println("A1 = " + a1);
+		System.out.println("A2 = " + a2);
+		System.out.println("Alfa = " + alfa);
+		System.out.println("Alfa1 = " + alfa1);
+		System.out.println("Alfa2 = " + alfa2);
+
+		System.out.println("B1 = " + BetaCalculator.getB1(generations, lastGenerations));
+		System.out.println("B2 = " + BetaCalculator.getB2(generations, lastGenerations));
+		System.out.println("Beta = " + BetaCalculator.getBeta(generations, lastGenerations));
+		System.out.println("Beta1 = " + BetaCalculator.getBeta1(generations, lastGenerations));
+		System.out.println("Beta2 = " + BetaCalculator.getBeta2(generations, lastGenerations));
+		
+		System.out.println("C1 = " + GammaCalculator.getC1(generations, lastGenerations));
+		System.out.println("C2 = " + GammaCalculator.getC2(generations, lastGenerations));
+		System.out.println("Gama = " + GammaCalculator.getGamma(generations, lastGenerations));
+		System.out.println("Gama1 = " + GammaCalculator.getGamma1(generations, lastGenerations));
+		System.out.println("Gama2 = " + GammaCalculator.getGamma2(generations, lastGenerations));
+
+		System.out.println("E1 = " + EpslonCalculator.getE1(generations, lastGenerations));
+		System.out.println("E2 = " + EpslonCalculator.getE2(generations, lastGenerations));
+		System.out.println("E = " + EpslonCalculator.getE(generations, lastGenerations));
+		System.out.println("Epslon = " + EpslonCalculator.getEpslon(generations, lastGenerations));
+		System.out.println("V = " + EpslonCalculator.getUpslon(generations, lastGenerations));
 
 //		XYChart chart = getChart(map, Constants.TIME);
 //		new SwingWrapper<XYChart>(chart).displayChart();
@@ -126,16 +158,18 @@ public class Main {
 		
 		XYChart chart1 = getChart(map, Constants.TIME, excludeStates1);
 		XYChart chart2 = getChart(map, Constants.TIME, excludeStates2);
-		XYChart chart3 = getChart(map, Constants.TIME, new HashSet<CellularAutomataState>());
+//		XYChart chart3 = getChart(map, Constants.TIME, new HashSet<CellularAutomataState>());
 		
 		new SwingWrapper<XYChart>(chart1).displayChart();
 		new SwingWrapper<XYChart>(chart2).displayChart();
-		new SwingWrapper<XYChart>(chart3).displayChart();
+//		new SwingWrapper<XYChart>(chart3).displayChart();
 
 		BitmapEncoder.saveBitmap(chart1, "./grafico1", BitmapFormat.PNG);
 		BitmapEncoder.saveBitmap(chart2, "./grafico2", BitmapFormat.PNG);
-		BitmapEncoder.saveBitmap(chart3, "./grafico3", BitmapFormat.PNG);
+//		BitmapEncoder.saveBitmap(chart3, "./grafico3", BitmapFormat.PNG);
 
+		
+		new EDOGraphGenerator(alfa1, alfa2, alfa, a1, a2).generateChart();
 		/*
 		 * BitmapEncoder.saveBitmapWithDPI(chart, "./Sarampo_Chart_300_DPI",
 		 * BitmapFormat.PNG, 300);
