@@ -8,8 +8,11 @@ public interface CellularAutomataState {
 
 	public abstract String getDescription();
 
+	public abstract String getSymbol();
+
 	public abstract CellularAutomataState applyRule(List<CellularAutomataState> neighborhood);
 
 	public abstract Double getPercentage();
+
 
 }

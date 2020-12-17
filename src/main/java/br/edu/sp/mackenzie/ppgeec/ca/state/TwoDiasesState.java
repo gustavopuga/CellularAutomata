@@ -11,28 +11,30 @@ import br.edu.sp.mackenzie.ppgeec.Constants;
 import br.edu.sp.mackenzie.ppgeec.ca.util.KCalculator;
 
 public enum TwoDiasesState implements CellularAutomataState {
-	
-	S(0, "Suscetível as doenças", 0.98),
-    I1(1, "Infectado por 1 / nunca contraiu 2", 0.01),
-    I2(2, "Infectado por 2 / nunca contraiu 1", 0.01),
-    I12(3, "Infectado por 1 / imune a 2 porque contraiu 2", 0d),
-    I21(4, "Infectado por 2 / imune a 1 porque contraiu 1", 0d),
-    I(5, "Infectado por 2 / imune a 1 por ter sido vacinado contra 1", 0d),
-    R1(6, "Imune a 1 por ter contraído 1", 0d),
-    R2(7, "Imune a 2 por ter contraído 2", 0d),
-    R(8, "Imune as duas doenças", 0d),
-    V(9, "Imune a 1 por ter se vacinado contra 1", 0d);
+
+	S(0, "Suscetível as doenças", "S", 0.98),
+	I1(1, "Infectado por 1 / nunca contraiu 2", "I\u2081", 0.01),
+	I2(2, "Infectado por 2 / nunca contraiu 1", "I\u2082", 0.01), 
+	I12(3, "Infectado por 1 / imune a 2 porque contraiu 2", "I\u2081\u2082", 0d),
+	I21(4, "Infectado por 2 / imune a 1 porque contraiu 1", "I\u2082\u2081", 0d),
+	I(5, "Infectado por 2 / imune a 1 por ter sido vacinado contra 1", "I", 0d), 
+	R1(6, "Imune a 1 por ter contraído 1", "R\u2081", 0d),
+	R2(7, "Imune a 2 por ter contraído 2", "R\u2082", 0d), 
+	R(8, "Imune as duas doenças", "R", 0d),
+	V(9, "Imune a 1 por ter se vacinado contra 1", "V", 0d);
 
 	private final Map<TwoDiasesState, Map<TwoDiasesState, Function<Double, Double>>> graph = new HashMap<>();
 
 	private final int value;
 	private final String description;
+	private final String symbol;
 	private final Double populationPercentage;
 
-	private TwoDiasesState(int value, String description, Double populationPercentage) {
+	private TwoDiasesState(int value, String description, String symbol, Double populationPercentage) {
 
 		this.value = value;
 		this.description = description;
+		this.symbol = symbol;
 		this.populationPercentage = populationPercentage;
 	}
 
@@ -45,51 +47,51 @@ public enum TwoDiasesState implements CellularAutomataState {
 			sVertex.put(V, n -> Probabilities.V);
 			sVertex.put(I1, n -> 1 - Math.pow(Math.E, -1 * KCalculator.getK1(n) * n));
 			sVertex.put(I2, n -> 1 - Math.pow(Math.E, -1 * KCalculator.getK2(n) * n));
-	
+
 			// I1
 			Map<TwoDiasesState, Function<Double, Double>> i1Vertex = new LinkedHashMap<>();
 			i1Vertex.put(R1, n -> Probabilities.B1);
 			i1Vertex.put(S, n -> Probabilities.C1);
-	
+
 			// I12
 			Map<TwoDiasesState, Function<Double, Double>> i12Vertex = new LinkedHashMap<>();
 			i12Vertex.put(R, n -> Probabilities.BETA1);
 			i12Vertex.put(S, n -> Probabilities.GAMMA1);
-	
+
 			// I21
 			Map<TwoDiasesState, Function<Double, Double>> i21Vertex = new LinkedHashMap<>();
 			i21Vertex.put(R, n -> Probabilities.BETA2);
 			i21Vertex.put(S, n -> Probabilities.GAMMA2);
-	
+
 			// I2
 			Map<TwoDiasesState, Function<Double, Double>> i2Vertex = new LinkedHashMap<>();
 			i2Vertex.put(R2, n -> Probabilities.B2);
 			i2Vertex.put(S, n -> Probabilities.C2);
-	
+
 			// I
-			Map<TwoDiasesState, Function<Double,  Double>> iVertex = new LinkedHashMap<>();
+			Map<TwoDiasesState, Function<Double, Double>> iVertex = new LinkedHashMap<>();
 			iVertex.put(R, n -> Probabilities.BETA);
 			iVertex.put(S, n -> Probabilities.GAMMA);
-	
+
 			// R1
 			Map<TwoDiasesState, Function<Double, Double>> r1Vertex = new LinkedHashMap<>();
 			r1Vertex.put(S, n -> Probabilities.E1);
 			r1Vertex.put(I21, n -> 1 - Math.pow(Math.E, -1 * KCalculator.getK4(n) * n));
-	
+
 			// R2
 			Map<TwoDiasesState, Function<Double, Double>> r2Vertex = new LinkedHashMap<>();
 			r2Vertex.put(S, n -> Probabilities.E2);
 			r2Vertex.put(I12, n -> 1 - Math.pow(Math.E, -1 * KCalculator.getK3(n) * n));
-			
+
 			// R
 			Map<TwoDiasesState, Function<Double, Double>> rVertex = new LinkedHashMap<>();
-			rVertex.put(S, n -> Probabilities.EPSLON);
-	
+			rVertex.put(S, n -> Probabilities.EPSILON);
+
 			// V
 			Map<TwoDiasesState, Function<Double, Double>> vVertex = new LinkedHashMap<>();
 			vVertex.put(S, n -> Probabilities.E);
 			vVertex.put(I, n -> 1 - Math.pow(Math.E, -1 * KCalculator.getK5(n) * n));
-	
+
 			// GRAPH
 			graph.put(S, sVertex);
 			graph.put(I1, i1Vertex);
@@ -114,70 +116,107 @@ public enum TwoDiasesState implements CellularAutomataState {
 	public String getDescription() {
 		return description;
 	}
+	
+	@Override
+	public String getSymbol() {
+		return symbol;
+	}
 
 	@Override
 	public CellularAutomataState applyRule(List<CellularAutomataState> neighborhood) {
 
 		double n = 0;
-		
+
 		initGraph();
 		Map<TwoDiasesState, Function<Double, Double>> vertexMap = this.graph.get(this);
 
 		Random random = new Random();
-		for (TwoDiasesState state : vertexMap.keySet()) {
 
-			Function<Double, Double> rule = vertexMap.get(state);	
-			n = countNeighbors(neighborhood, n, state);
+		double diaseNeighbors = countNeighborsDiase(neighborhood, n);
+		double diaseProbability = diaseProbability(diaseNeighbors);
+		if (TwoDiasesState.S.equals(this)) {
+			
+			Function<Double, Double> rule = vertexMap.get(V);
+			n = countNeighbors(neighborhood, n, V);
 			double probability = rule.apply(n);
 			if (random.nextDouble() < probability) {
-				return state;
+				return V;
+			}
+			
+			if (random.nextDouble() < diaseProbability) {
+				double pI1 = countNeighborByState(neighborhood, I1, I12) / diaseNeighbors;
+
+				double pRandom = random.nextDouble();
+				if (pRandom < pI1) {
+					return I1;
+				} else {
+					return I2;
+				}
+			} 
+		} else {
+			for (TwoDiasesState state : vertexMap.keySet()) {
+
+				Function<Double, Double> rule = vertexMap.get(state);
+				n = countNeighbors(neighborhood, n, state);
+				double probability = rule.apply(n);
+				if (random.nextDouble() < probability) {
+					return state;
+				}
 			}
 		}
 
 		return this;
 	}
 
+	private double countNeighborsDiase(List<CellularAutomataState> neighborhood, double n) {
+		return countNeighborByState(neighborhood, I1, I12, I2, I21, I);
+	}
+
+	private double diaseProbability(double n) {
+		return 1 - Math.pow(Math.E, -1 * Constants.K * n);
+	}
+
 	private double countNeighbors(List<CellularAutomataState> neighborhood, double n, TwoDiasesState state) {
 		switch (state) {
-		
+
 		case I1:
-			
+
 			if (TwoDiasesState.S.equals(this)) {
 				n = countNeighborByState(neighborhood, I1, I12);
 			}
 			break;
-			
+
 		case I2:
-			
+
 			if (TwoDiasesState.S.equals(this)) {
 				n = countNeighborByState(neighborhood, I2, I21, I);
 			}
 			break;
-			
+
 		case I21:
-			
+
 			if (TwoDiasesState.R1.equals(this)) {
 				n = countNeighborByState(neighborhood, I2, I21, I);
 			}
 			break;
-			
+
 		case I12:
-			
+
 			if (TwoDiasesState.R2.equals(this)) {
 				n = countNeighborByState(neighborhood, I1, I12);
 			}
 			break;
-		
+
 		case I:
-			
+
 			if (TwoDiasesState.V.equals(this)) {
 				n = countNeighborByState(neighborhood, I2, I21, I);
 			}
 			break;
-			
+
 		default:
 			break;
-			
+
 		}
 		return n;
 	}

@@ -6,7 +6,7 @@ import java.util.List;
 import br.edu.sp.mackenzie.ppgeec.ca.state.CellularAutomataState;
 import br.edu.sp.mackenzie.ppgeec.ca.state.TwoDiasesState;
 
-public class EpslonCalculator {
+public class EpsilonCalculator {
 
 	public static double getE1(List<CellularAutomataState[][]> generations, int lastGenerations) {
 		int first = generations.size() - lastGenerations - 2;
@@ -20,7 +20,7 @@ public class EpslonCalculator {
 			CellularAutomataState[][] statesTime2 = generations.get(count + 1);
 
 			double delta = 0;
-			double i1 = 0;
+			double r1 = 0;
 
 			for (int j = 0; j < statesTime1.length; j++) {
 				for (int k = 0; k < statesTime1[j].length; k++) {
@@ -29,13 +29,13 @@ public class EpslonCalculator {
 					}
 
 					if (TwoDiasesState.R1.equals(statesTime2[j][k])) {
-						i1++;
+						r1++;
 					}
 
 				}
 			}
 
-			double d = i1;
+			double d = r1;
 			double e1 = (delta == 0 && d == 0) ? 0 : (delta / d);
 			values.add(e1);
 
@@ -57,7 +57,7 @@ public class EpslonCalculator {
 			CellularAutomataState[][] statesTime2 = generations.get(count + 1);
 
 			double delta = 0;
-			double i2 = 0;
+			double r2 = 0;
 
 			for (int j = 0; j < statesTime1.length; j++) {
 				for (int k = 0; k < statesTime1[j].length; k++) {
@@ -66,12 +66,12 @@ public class EpslonCalculator {
 					}
 
 					if (TwoDiasesState.R2.equals(statesTime2[j][k])) {
-						i2++;
+						r2++;
 					}
 				}
 			}
 
-			double d = i2;
+			double d = r2;
 			double e2 = (delta == 0 && d == 0) ? 0 : (delta / d);
 			values.add(e2);
 
@@ -94,7 +94,7 @@ public class EpslonCalculator {
 			CellularAutomataState[][] statesTime2 = generations.get(count + 1);
 
 			double delta = 0;
-			double i = 0;
+			double v = 0;
 
 			for (int j = 0; j < statesTime1.length; j++) {
 				for (int k = 0; k < statesTime1[j].length; k++) {
@@ -103,13 +103,13 @@ public class EpslonCalculator {
 					}
 
 					if (TwoDiasesState.V.equals(statesTime2[j][k])) {
-						i++;
+						v++;
 					}
 
 				}
 			}
 
-			double d = i;
+			double d = v;
 			double e = (delta == 0 && d == 0) ? 0 : (delta / d);
 			values.add(e);
 
@@ -119,7 +119,7 @@ public class EpslonCalculator {
 
 	}
 
-	public static double getEpslon(List<CellularAutomataState[][]> generations, int lastGenerations) {
+	public static double getEpsilon(List<CellularAutomataState[][]> generations, int lastGenerations) {
 
 		int first = generations.size() - lastGenerations - 2;
 		if (first < 0) {
@@ -132,7 +132,7 @@ public class EpslonCalculator {
 			CellularAutomataState[][] statesTime2 = generations.get(count + 1);
 
 			double delta = 0;
-			double i12 = 0;
+			double r = 0;
 
 			for (int j = 0; j < statesTime1.length; j++) {
 				for (int k = 0; k < statesTime1[j].length; k++) {
@@ -141,13 +141,13 @@ public class EpslonCalculator {
 					}
 
 					if (TwoDiasesState.R.equals(statesTime2[j][k])) {
-						i12++;
+						r++;
 					}
 
 				}
 			}
 
-			double d = i12;
+			double d = r;
 			double epslon = (delta == 0 && d == 0) ? 0 : (delta / d);
 			values.add(epslon);
 
@@ -157,7 +157,7 @@ public class EpslonCalculator {
 
 	}
 
-	public static double getUpslon(List<CellularAutomataState[][]> generations, int lastGenerations) {
+	public static double getUpsilon(List<CellularAutomataState[][]> generations, int lastGenerations) {
 
 		int first = generations.size() - lastGenerations - 2;
 		if (first < 0) {
@@ -170,21 +170,24 @@ public class EpslonCalculator {
 			CellularAutomataState[][] statesTime2 = generations.get(count + 1);
 
 			double delta = 0;
-			double i21 = 0;
+			double s = 0;
 
 			for (int j = 0; j < statesTime1.length; j++) {
 				for (int k = 0; k < statesTime1[j].length; k++) {
-					if (TwoDiasesState.S.equals(statesTime1[j][k]) && TwoDiasesState.V.equals(statesTime2[j][k])) {
+					CellularAutomataState stateTime1 = statesTime1[j][k];
+					CellularAutomataState stateTime2 = statesTime2[j][k];
+
+					if (TwoDiasesState.S.equals(stateTime1) && TwoDiasesState.V.equals(stateTime2)) {
 						delta++;
 					}
 
-					if (TwoDiasesState.S.equals(statesTime2[j][k])) {
-						i21++;
+					if (TwoDiasesState.S.equals(stateTime2)) {
+						s++;
 					}
 				}
 			}
-
-			double d = i21;
+			
+			double d = s;
 			double upslon = (delta == 0 && d == 0) ? 0 : (delta / d);
 			values.add(upslon);
 

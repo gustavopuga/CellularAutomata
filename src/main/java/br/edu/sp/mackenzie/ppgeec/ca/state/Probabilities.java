@@ -30,7 +30,7 @@ public interface Probabilities {
 	public final double E1 = 0.1;
 	public final double E2 = 0.1;
 
-	public final double EPSLON = 0.1;
+	public final double EPSILON = 0.1;
 
 	// VACINA
 	public final double V = 0.05;

@@ -13,18 +13,21 @@ import br.edu.sp.mackenzie.ppgeec.Constants;
 
 public enum PopulationTestState implements CellularAutomataState {
 
-	SUSCEPTIBLE(0, "Suscetível", 0.99), INFECTIOUS(1, "Infectado", 0.01), RECOVERY(2, "Recuperado", 0d);
+	SUSCEPTIBLE(0, "Suscetï¿½vel", "S", 0.99), INFECTIOUS(1, "Infectado", "I", 0.01), RECOVERY(2, "Recuperado", "R", 0d);
 
 	private final Map<PopulationTestState, Map<PopulationTestState, Collection<Function<Double, Function<Double, Double>>>>> graph = new HashMap<>();
 
 	private final int value;
 	private final String description;
+	private final String symbol;
 	private final Double populationPercentage;
 
-	private PopulationTestState(int value, String description, Double populationPercentage) {
+
+	private PopulationTestState(int value, String description, String symbol, Double populationPercentage) {
 
 		this.value = value;
 		this.description = description;
+		this.symbol = symbol;
 		this.populationPercentage = populationPercentage;
 	}
 
@@ -74,6 +77,10 @@ public enum PopulationTestState implements CellularAutomataState {
 	@Override
 	public String getDescription() {
 		return description;
+	}
+
+	public String getSymbol() {
+		return symbol;
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package br.edu.sp.mackenzie.ppgeec.ca;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -86,7 +87,7 @@ public class CellularAutomata {
 
 	public Map<CellularAutomataState, List<Double>> generateGenerationsStateMap() {
 
-		Map<CellularAutomataState, List<Double>> map = new HashMap<>();
+		Map<CellularAutomataState, List<Double>> map = new LinkedHashMap<>();
 		for (CellularAutomataState cellularAutomataState : this.values) {
 			map.put(cellularAutomataState, new ArrayList<>());
 		}
