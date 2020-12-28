@@ -15,7 +15,7 @@ import org.knowm.xchart.style.Styler.LegendPosition;
 import org.knowm.xchart.style.markers.SeriesMarkers;
 
 import br.edu.sp.mackenzie.ppgeec.Constants;
-import br.edu.sp.mackenzie.ppgeec.ca.state.TwoDiasesState;
+import br.edu.sp.mackenzie.ppgeec.ca.state.TwoDiaseState;
 
 public class EDOGraphGenerator {
 
@@ -97,16 +97,16 @@ public class EDOGraphGenerator {
 
 	private void getEquations() {
 
-		sValues.add(TwoDiasesState.S.getPercentage());
-		i1Values.add(TwoDiasesState.I1.getPercentage());
-		i2Values.add(TwoDiasesState.I2.getPercentage());
-		i12Values.add(TwoDiasesState.I12.getPercentage());
-		i21Values.add(TwoDiasesState.I21.getPercentage());
-		iValues.add(TwoDiasesState.I.getPercentage());
-		r1Values.add(TwoDiasesState.R1.getPercentage());
-		r2Values.add(TwoDiasesState.R2.getPercentage());
-		rValues.add(TwoDiasesState.R.getPercentage());
-		vValues.add(TwoDiasesState.V.getPercentage());
+		sValues.add(TwoDiaseState.S.getPercentage());
+		i1Values.add(TwoDiaseState.I1.getPercentage());
+		i2Values.add(TwoDiaseState.I2.getPercentage());
+		i12Values.add(TwoDiaseState.I12.getPercentage());
+		i21Values.add(TwoDiaseState.I21.getPercentage());
+		iValues.add(TwoDiaseState.I.getPercentage());
+		r1Values.add(TwoDiaseState.R1.getPercentage());
+		r2Values.add(TwoDiaseState.R2.getPercentage());
+		rValues.add(TwoDiaseState.R.getPercentage());
+		vValues.add(TwoDiaseState.V.getPercentage());
 		tValues.add(0d);
 
 		int time = (int) (Constants.TIME / STEP);
@@ -163,7 +163,7 @@ public class EDOGraphGenerator {
 
 	}
 
-	public void generateChart() throws IOException {
+	public String generateChart(String path) throws IOException {
 
 		getEquations();
 		double[] xTime = tValues.stream().mapToDouble(x -> x).toArray();
@@ -179,16 +179,16 @@ public class EDOGraphGenerator {
 		double[] arrayR = rValues.stream().mapToDouble(x -> x).toArray();
 		double[] arrayV = vValues.stream().mapToDouble(x -> x).toArray();
 
-		String sLabel =  TwoDiasesState.S.getSymbol() + "    " + TwoDiasesState.S.getDescription();
-		String i1Label = TwoDiasesState.I1.getSymbol() + "  " + TwoDiasesState.I1.getDescription();
-		String i2Label = TwoDiasesState.I2.getSymbol() + "  " +TwoDiasesState.I2.getDescription();
-		String i12Label = TwoDiasesState.I12.getSymbol() + " " + TwoDiasesState.I12.getDescription();
-		String i21Label = TwoDiasesState.I21.getSymbol() + " " +TwoDiasesState.I21.getDescription();
-		String iLabel = TwoDiasesState.I.getSymbol() + "    " + TwoDiasesState.I.getDescription();
-		String r1Label = TwoDiasesState.R1.getSymbol() + "  " + TwoDiasesState.R1.getDescription();
-		String r2Label = TwoDiasesState.R2.getSymbol() + "  " + TwoDiasesState.R2.getDescription();
-		String rLabel = TwoDiasesState.R.getSymbol() + "   " + TwoDiasesState.R.getDescription();
-		String vLabel = TwoDiasesState.V.getSymbol() + "   " + TwoDiasesState.V.getDescription();
+		String sLabel =  TwoDiaseState.S.getSymbol() + "    " + TwoDiaseState.S.getDescription();
+		String i1Label = TwoDiaseState.I1.getSymbol() + "  " + TwoDiaseState.I1.getDescription();
+		String i2Label = TwoDiaseState.I2.getSymbol() + "  " +TwoDiaseState.I2.getDescription();
+		String i12Label = TwoDiaseState.I12.getSymbol() + " " + TwoDiaseState.I12.getDescription();
+		String i21Label = TwoDiaseState.I21.getSymbol() + " " +TwoDiaseState.I21.getDescription();
+		String iLabel = TwoDiaseState.I.getSymbol() + "    " + TwoDiaseState.I.getDescription();
+		String r1Label = TwoDiaseState.R1.getSymbol() + "  " + TwoDiaseState.R1.getDescription();
+		String r2Label = TwoDiaseState.R2.getSymbol() + "  " + TwoDiaseState.R2.getDescription();
+		String rLabel = TwoDiaseState.R.getSymbol() + "   " + TwoDiaseState.R.getDescription();
+		String vLabel = TwoDiaseState.V.getSymbol() + "   " + TwoDiaseState.V.getDescription();
 
 		XYChart chart1 = buildXYChart();
 		chart1.addSeries(i1Label, xTime, arrayI1).setMarker(SeriesMarkers.NONE);
@@ -204,25 +204,27 @@ public class EDOGraphGenerator {
 		chart2.addSeries(rLabel, xTime, arrayR).setMarker(SeriesMarkers.NONE);
 		chart2.addSeries(vLabel, xTime, arrayV).setMarker(SeriesMarkers.NONE);
 
-		System.out.println("\n ======= VARIAVEIS EDO ======= \n");
+		StringBuilder builder = new StringBuilder("\n ======= VARIAVEIS EDO ======= \n");
 
-		System.out.println("S = " + sValues.get(sValues.size() - 1));
-		System.out.println("I1 = " + i1Values.get(i1Values.size() - 1));
-		System.out.println("I2 = " + +i2Values.get(i2Values.size() - 1));
-		System.out.println("I12 = " + +i12Values.get(i12Values.size() - 1));
-		System.out.println("I21 = " + +i21Values.get(i21Values.size() - 1));
-		System.out.println("I = " + +iValues.get(iValues.size() - 1));
-		System.out.println("R1 = " + +r1Values.get(r1Values.size() - 1));
-		System.out.println("R2 = " + +r2Values.get(r2Values.size() - 1));
-		System.out.println("R = " + +rValues.get(rValues.size() - 1));
-		System.out.println("V = " + +vValues.get(vValues.size() - 1));
-		System.out.println("t = " + +tValues.get(tValues.size() - 1));
+		builder.append("\nS = " + sValues.get(sValues.size() - 1));
+		builder.append("\nI1 = " + i1Values.get(i1Values.size() - 1));
+		builder.append("\nI2 = " + +i2Values.get(i2Values.size() - 1));
+		builder.append("\nI12 = " + +i12Values.get(i12Values.size() - 1));
+		builder.append("\nI21 = " + +i21Values.get(i21Values.size() - 1));
+		builder.append("\nI = " + +iValues.get(iValues.size() - 1));
+		builder.append("\nR1 = " + +r1Values.get(r1Values.size() - 1));
+		builder.append("\nR2 = " + +r2Values.get(r2Values.size() - 1));
+		builder.append("\nR = " + +rValues.get(rValues.size() - 1));
+		builder.append("\nV = " + +vValues.get(vValues.size() - 1));
+		builder.append("\nt = " + +tValues.get(tValues.size() - 1));
 
-		new SwingWrapper<XYChart>(chart1).displayChart();
-		new SwingWrapper<XYChart>(chart2).displayChart();
+//		new SwingWrapper<XYChart>(chart1).displayChart();
+//		new SwingWrapper<XYChart>(chart2).displayChart();
 
-		BitmapEncoder.saveBitmap(chart1, "./edo_grafico1", BitmapFormat.PNG);
-		BitmapEncoder.saveBitmap(chart2, "./edo_grafico2", BitmapFormat.PNG);
+		BitmapEncoder.saveBitmap(chart1, "./" + path + "/edo_grafico1", BitmapFormat.PNG);
+		BitmapEncoder.saveBitmap(chart2, "./" + path + "/edo_grafico2", BitmapFormat.PNG);
+		
+		return builder.toString();
 
 	}
 

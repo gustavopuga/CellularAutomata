@@ -1,20 +1,20 @@
 package br.edu.sp.mackenzie.ppgeec;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.IntStream;
 
 import org.apache.commons.lang3.time.DurationFormatUtils;
-import org.knowm.xchart.BitmapEncoder;
-import org.knowm.xchart.BitmapEncoder.BitmapFormat;
-import org.knowm.xchart.SwingWrapper;
 import org.knowm.xchart.XYChart;
 import org.knowm.xchart.XYChartBuilder;
 import org.knowm.xchart.XYSeries.XYSeriesRenderStyle;
@@ -22,17 +22,11 @@ import org.knowm.xchart.style.Styler.ChartTheme;
 import org.knowm.xchart.style.Styler.LegendPosition;
 import org.knowm.xchart.style.markers.SeriesMarkers;
 
-import br.edu.sp.mackenzie.ppgeec.ca.CellularAutomata;
-import br.edu.sp.mackenzie.ppgeec.ca.neighborhood.MooreNeighborhood;
+import br.edu.sp.mackenzie.ppgeec.ca.chart.JZY3D;
 import br.edu.sp.mackenzie.ppgeec.ca.state.CellularAutomataState;
-import br.edu.sp.mackenzie.ppgeec.ca.state.TwoDiasesState;
+import br.edu.sp.mackenzie.ppgeec.ca.state.TwoDiaseState;
 import br.edu.sp.mackenzie.ppgeec.csv.CSVChart1;
 import br.edu.sp.mackenzie.ppgeec.csv.CSVUtils;
-import br.edu.sp.mackenzie.ppgeec.edo.EDOGraphGenerator;
-import br.edu.sp.mackenzie.ppgeec.edo.calculator.AlfaCalculator;
-import br.edu.sp.mackenzie.ppgeec.edo.calculator.BetaCalculator;
-import br.edu.sp.mackenzie.ppgeec.edo.calculator.EpsilonCalculator;
-import br.edu.sp.mackenzie.ppgeec.edo.calculator.GammaCalculator;
 import br.edu.sp.mackenzie.ppgeec.edo.calculator.VariablesCalculator;
 
 public class Main {
@@ -59,7 +53,7 @@ public class Main {
 				String symbol = state.getSymbol();
 				int letters = symbol.length();
 				StringBuilder label = new StringBuilder(symbol);
-				while(letters < 4) {
+				while (letters < 4) {
 					label.append(" ");
 					letters++;
 				}
@@ -74,7 +68,7 @@ public class Main {
 
 		return chart;
 	}
-	
+
 	public static void toCSV(Map<CellularAutomataState, List<Double>> map) throws IOException {
 
 		List<CSVChart1> list = new ArrayList<>();
@@ -110,124 +104,188 @@ public class Main {
 
 	}
 
-	public static void main(String[] args) throws IOException {
-		
+	public static void main(String[] args) throws Exception {
 		Instant start = Instant.now();
-		CellularAutomata ca = new CellularAutomata(Constants.COLUMNS, Constants.ROWS,
-				new MooreNeighborhood(Constants.RADIUS), TwoDiasesState.class);
-		ca.nextGeneration(Constants.TIME);
-		Instant end = Instant.now();
-		Duration between = Duration.between(start, end);
-		System.out.println("\n ======= Metrica  AC ======= \n");
-		System.out
-				.println("Tempo de simulação: " + DurationFormatUtils.formatDuration(between.toMillis(), "HH:mm:sss"));
 
-		Map<CellularAutomataState, List<Double>> map = ca.generateGenerationsStateMap();
+		Map<VacinationPercentual, List<SimulationCase>> caseMap = SimulationCaseFactory.createCases();
+		for (VacinationPercentual v : VacinationPercentual.values()) {
+			List<double[]> mortos1 = new ArrayList<>();
+			List<double[]> mortos2 = new ArrayList<>();
+			List<double[]> infectados1 = new ArrayList<>();
+			List<double[]> infectados2 = new ArrayList<>();
 
-		List<CellularAutomataState[][]> generations = ca.getGenerations();
-		int lastGenerations = 50;
-		toCSV(map);
+			List<SimulationCase> cases = caseMap.get(v);
+			StringBuilder builderPath = new StringBuilder("taxa_vacinacao_");
+			builderPath.append(v.getValue());
+//		List<SimulationCase> cases = caseMap.get(VacinationPercentual.ZERO);
+			for (SimulationCase simulationCase : cases) {
+				simulationCase.execute();
 
-		double a = AlfaCalculator.getA(generations, lastGenerations);
-		double alfa = AlfaCalculator.getAlfa(generations, lastGenerations);
-		double alfa1 = AlfaCalculator.getAlfa1(generations, lastGenerations);
-		double alfa2 = AlfaCalculator.getAlfa2(generations, lastGenerations);
-		double y = AlfaCalculator.getY(generations, lastGenerations);
-		
-		double b1 = BetaCalculator.getB1(generations, lastGenerations);
-		double b2 = BetaCalculator.getB2(generations, lastGenerations);
-		double beta = BetaCalculator.getBeta(generations, lastGenerations);
-		double beta1 = BetaCalculator.getBeta1(generations, lastGenerations);
-		double beta2 = BetaCalculator.getBeta2(generations, lastGenerations);
-		
-		double c1 = GammaCalculator.getC1(generations, lastGenerations);
-		double c2 = GammaCalculator.getC2(generations, lastGenerations);
-		double gamma = GammaCalculator.getGamma(generations, lastGenerations);
-		double gamma1 = GammaCalculator.getGamma1(generations, lastGenerations);
-		double gamma2 = GammaCalculator.getGamma2(generations, lastGenerations);
+				double taxaMorte = simulationCase.getTaxaMorte();
+				double taxaCura = simulationCase.getTaxaCura();
 
-		double e1 = EpsilonCalculator.getE1(generations, lastGenerations);
-		double e2 = EpsilonCalculator.getE2(generations, lastGenerations);
-		double e = EpsilonCalculator.getE(generations, lastGenerations);
-		double epsilon = EpsilonCalculator.getEpsilon(generations, lastGenerations);
-		double upsilon = EpsilonCalculator.getUpsilon(generations, lastGenerations);
+				mortos1.add(new double[] { taxaMorte, taxaCura, simulationCase.getMortosDoenca1() });
+				mortos2.add(new double[] { taxaMorte, taxaCura, simulationCase.getMortosDoenca2() });
+				infectados1.add(new double[] { taxaMorte, taxaCura, simulationCase.getInfectados1() });
+				infectados2.add(new double[] { taxaMorte, taxaCura, simulationCase.getInfectados2() });
+			}
 
-		System.out.println("\n ======= As, ALFAS e Y ======= \n");
-		System.out.println("A = " + a);
-		System.out.println("ALFA = " + alfa);
-		System.out.println("ALFA1 = " + alfa1);
-		System.out.println("ALFA2 = " + alfa2);
-		System.out.println("Y = " + y);
+			Instant end = Instant.now();
+			Duration between = Duration.between(start, end);
+			System.out.println(
+					"Tempo de simulação: " + DurationFormatUtils.formatDuration(between.toMillis(), "HH:mm:sss"));
 
-		System.out.println("\n ======= Bs e BETAS ======= \n");
-		System.out.println("B1 = " + b1);
-		System.out.println("B2 = " + b2);
-		System.out.println("BETA = " + beta);
-		System.out.println("BETA1 = " + beta1);
-		System.out.println("BETA2 = " + beta2);
+			for (double[] values : mortos1) {
+				System.out.println(Arrays.toString(values));
+			}
+			String path = builderPath.toString();
+			JZY3D.plot("Mortos doença 1", path, mortos1);
+			JZY3D.plot("Mortos doença 2", path, mortos2);
+			JZY3D.plot("Infectados doença 1", path, infectados1);
+			JZY3D.plot("Infectados doença 2", path, infectados2);
+		}
+//		SurfaceChart.plot("Mortos doença 1", mortos1);
+//		SurfaceChart.plot("Mortos doença 2", mortos2);
+//		SurfaceChart.plot("Infectados doença 1", infectados1);
+//		SurfaceChart.plot("Infectados doença 2", infectados2);
 
-		System.out.println("\n ======= Cs e GAMMAS ======= \n");
-		System.out.println("C1 = " + c1);
-		System.out.println("C2 = " + c2);
-		System.out.println("GAMMA = " + gamma);
-		System.out.println("GAMMA1 = " + gamma1);
-		System.out.println("GAMMA2 = " + gamma2);
+//		ScatterPlot3D.plot("Mortos doença 1", mortos1);
+//		ScatterPlot3D.plot("Mortos doença 2", mortos2);
+//		ScatterPlot3D.plot("Infectados doença 1", infectados1);
+//		ScatterPlot3D.plot("Infectados doença 2", infectados2);
+//		}
 
-		System.out.println("\n ======= Es, EPSILON e V ======= \n");
-		System.out.println("E1 = " + e1);
-		System.out.println("E2 = " + e2);
-		System.out.println("E = " + e);
-		System.out.println("EPSILON = " + epsilon);
-		System.out.println("V = " + upsilon);
+		// create your PlotPanel (you can use it as a JPanel)
+//		  Plot3DPanel plot = new Plot3DPanel();
+//		  double[] x = { 1, 2, 3, 4, 5, 6 };
+//          double[] y = { 45, 89, 6, 32, 63, 12 };
+//          double[] z = { 45, 89, 6, 32, 63, 12 };
+//		  // add a line plot to the PlotPanel
+//		  plot.addScatterPlot("my plot", x, y, z);
+//		 
+//		  // put the PlotPanel in a JFrame, as a JPanel
+//		  JFrame frame = new JFrame("a plot panel");
+//		  frame.setContentPane(plot);
+//		  frame.setSize(600, 600);
+//		  frame.setVisible(true);
+//		  plot.toGraphicFile(new File("teste.png"));
 
-		System.out.println("\n ======= VARIAVEIS AC ======= \n");
-		System.out.println("S = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.S));
-		System.out.println("I1 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.I1));
-		System.out.println("I2 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.I2));
-		System.out.println("I12 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.I12));
-		System.out.println("I21 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.I21));
-		System.out.println("I = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.I));
-		System.out.println("R1 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.R1));
-		System.out.println("R2 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.R2));
-		System.out.println("R = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.R));
-		System.out.println("V = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.V));
-
-//		XYChart chart = getChart(map, Constants.TIME);
-//		new SwingWrapper<XYChart>(chart).displayChart();
-
-		HashSet<CellularAutomataState> excludeStates1 = new HashSet<>();
-		excludeStates1.add(TwoDiasesState.R);
-		excludeStates1.add(TwoDiasesState.R1);
-		excludeStates1.add(TwoDiasesState.R2);
-		excludeStates1.add(TwoDiasesState.S);
-		excludeStates1.add(TwoDiasesState.V);
-
-		HashSet<CellularAutomataState> excludeStates2 = new HashSet<>();
-		excludeStates2.add(TwoDiasesState.I);
-		excludeStates2.add(TwoDiasesState.I1);
-		excludeStates2.add(TwoDiasesState.I12);
-		excludeStates2.add(TwoDiasesState.I21);
-		excludeStates2.add(TwoDiasesState.I2);
-
-		XYChart chart1 = getChart(map, Constants.TIME, excludeStates1);
-		XYChart chart2 = getChart(map, Constants.TIME, excludeStates2);
-//		XYChart chart3 = getChart(map, Constants.TIME, new HashSet<CellularAutomataState>());
-
-		new SwingWrapper<XYChart>(chart1).displayChart();
-		new SwingWrapper<XYChart>(chart2).displayChart();
-//		new SwingWrapper<XYChart>(chart3).displayChart();
-
-		BitmapEncoder.saveBitmap(chart1, "./grafico1", BitmapFormat.PNG);
-		BitmapEncoder.saveBitmap(chart2, "./grafico2", BitmapFormat.PNG);
-//		BitmapEncoder.saveBitmap(chart3, "./grafico3", BitmapFormat.PNG);
-
-		new EDOGraphGenerator(alfa1, alfa2, alfa, a, y, beta1, beta2, beta, b1, b2, c1, c2, gamma1,
-				gamma2, gamma, e, e1, e2, epsilon, upsilon).generateChart();
+//		Instant start = Instant.now();
+//		CellularAutomata ca = new CellularAutomata(Constants.COLUMNS, Constants.ROWS,
+//				new MooreNeighborhood(Constants.RADIUS), TwoDiasesState.class);
+//		ca.nextGeneration(Constants.TIME);
+//		Instant end = Instant.now();
+//		Duration between = Duration.between(start, end);
+//		System.out.println("\n ======= Metrica  AC ======= \n");
+//		System.out
+//				.println("Tempo de simulação: " + DurationFormatUtils.formatDuration(between.toMillis(), "HH:mm:sss"));
+//
+//		Map<CellularAutomataState, List<Double>> map = ca.generateGenerationsStateMap();
+//
+//		List<CellularAutomataState[][]> generations = ca.getGenerations();
+//		int lastGenerations = 50;
+//		toCSV(map);
+//
+//		double a = AlfaCalculator.getA(generations, lastGenerations);
+//		double alfa = AlfaCalculator.getAlfa(generations, lastGenerations);
+//		double alfa1 = AlfaCalculator.getAlfa1(generations, lastGenerations);
+//		double alfa2 = AlfaCalculator.getAlfa2(generations, lastGenerations);
+//		double y = AlfaCalculator.getY(generations, lastGenerations);
+//		
+//		double b1 = BetaCalculator.getB1(generations, lastGenerations);
+//		double b2 = BetaCalculator.getB2(generations, lastGenerations);
+//		double beta = BetaCalculator.getBeta(generations, lastGenerations);
+//		double beta1 = BetaCalculator.getBeta1(generations, lastGenerations);
+//		double beta2 = BetaCalculator.getBeta2(generations, lastGenerations);
+//		
+//		double c1 = GammaCalculator.getC1(generations, lastGenerations);
+//		double c2 = GammaCalculator.getC2(generations, lastGenerations);
+//		double gamma = GammaCalculator.getGamma(generations, lastGenerations);
+//		double gamma1 = GammaCalculator.getGamma1(generations, lastGenerations);
+//		double gamma2 = GammaCalculator.getGamma2(generations, lastGenerations);
+//
+//		double e1 = EpsilonCalculator.getE1(generations, lastGenerations);
+//		double e2 = EpsilonCalculator.getE2(generations, lastGenerations);
+//		double e = EpsilonCalculator.getE(generations, lastGenerations);
+//		double epsilon = EpsilonCalculator.getEpsilon(generations, lastGenerations);
+//		double upsilon = EpsilonCalculator.getUpsilon(generations, lastGenerations);
+//
+//		System.out.println("\n ======= As, ALFAS e Y ======= \n");
+//		System.out.println("A = " + a);
+//		System.out.println("ALFA = " + alfa);
+//		System.out.println("ALFA1 = " + alfa1);
+//		System.out.println("ALFA2 = " + alfa2);
+//		System.out.println("Y = " + y);
+//
+//		System.out.println("\n ======= Bs e BETAS ======= \n");
+//		System.out.println("B1 = " + b1);
+//		System.out.println("B2 = " + b2);
+//		System.out.println("BETA = " + beta);
+//		System.out.println("BETA1 = " + beta1);
+//		System.out.println("BETA2 = " + beta2);
+//
+//		System.out.println("\n ======= Cs e GAMMAS ======= \n");
+//		System.out.println("C1 = " + c1);
+//		System.out.println("C2 = " + c2);
+//		System.out.println("GAMMA = " + gamma);
+//		System.out.println("GAMMA1 = " + gamma1);
+//		System.out.println("GAMMA2 = " + gamma2);
+//
+//		System.out.println("\n ======= Es, EPSILON e V ======= \n");
+//		System.out.println("E1 = " + e1);
+//		System.out.println("E2 = " + e2);
+//		System.out.println("E = " + e);
+//		System.out.println("EPSILON = " + epsilon);
+//		System.out.println("V = " + upsilon);
+//
+//		System.out.println("\n ======= VARIAVEIS AC ======= \n");
+//		System.out.println("S = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.S));
+//		System.out.println("I1 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.I1));
+//		System.out.println("I2 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.I2));
+//		System.out.println("I12 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.I12));
+//		System.out.println("I21 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.I21));
+//		System.out.println("I = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.I));
+//		System.out.println("R1 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.R1));
+//		System.out.println("R2 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.R2));
+//		System.out.println("R = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.R));
+//		System.out.println("V = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.V));
+//
+////		XYChart chart = getChart(map, Constants.TIME);
+////		new SwingWrapper<XYChart>(chart).displayChart();
+//
+//		HashSet<CellularAutomataState> excludeStates1 = new HashSet<>();
+//		excludeStates1.add(TwoDiasesState.R);
+//		excludeStates1.add(TwoDiasesState.R1);
+//		excludeStates1.add(TwoDiasesState.R2);
+//		excludeStates1.add(TwoDiasesState.S);
+//		excludeStates1.add(TwoDiasesState.V);
+//
+//		HashSet<CellularAutomataState> excludeStates2 = new HashSet<>();
+//		excludeStates2.add(TwoDiasesState.I);
+//		excludeStates2.add(TwoDiasesState.I1);
+//		excludeStates2.add(TwoDiasesState.I12);
+//		excludeStates2.add(TwoDiasesState.I21);
+//		excludeStates2.add(TwoDiasesState.I2);
+//
+//		XYChart chart1 = getChart(map, Constants.TIME, excludeStates1);
+//		XYChart chart2 = getChart(map, Constants.TIME, excludeStates2);
+////		XYChart chart3 = getChart(map, Constants.TIME, new HashSet<CellularAutomataState>());
+//
+//		new SwingWrapper<XYChart>(chart1).displayChart();
+//		new SwingWrapper<XYChart>(chart2).displayChart();
+////		new SwingWrapper<XYChart>(chart3).displayChart();
+//
+//		BitmapEncoder.saveBitmap(chart1, "./grafico1", BitmapFormat.PNG);
+//		BitmapEncoder.saveBitmap(chart2, "./grafico2", BitmapFormat.PNG);
+////		BitmapEncoder.saveBitmap(chart3, "./grafico3", BitmapFormat.PNG);
+//
+//		new EDOGraphGenerator(alfa1, alfa2, alfa, a, y, beta1, beta2, beta, b1, b2, c1, c2, gamma1,
+//				gamma2, gamma, e, e1, e2, epsilon, upsilon).generateChart();
 		/*
 		 * BitmapEncoder.saveBitmapWithDPI(chart, "./Sarampo_Chart_300_DPI",
 		 * BitmapFormat.PNG, 300);
 		 */
 
 	}
-
+	
 }
