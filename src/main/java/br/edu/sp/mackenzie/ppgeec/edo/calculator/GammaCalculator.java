@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.sp.mackenzie.ppgeec.ca.state.CellularAutomataState;
-import br.edu.sp.mackenzie.ppgeec.ca.state.TwoDiaseState;
+import br.edu.sp.mackenzie.ppgeec.ca.state.TwoDiasesState;
 
 public class GammaCalculator {
 
@@ -24,11 +24,11 @@ public class GammaCalculator {
 
 			for (int j = 0; j < statesTime1.length; j++) {
 				for (int k = 0; k < statesTime1[j].length; k++) {
-					if (TwoDiaseState.I1.equals(statesTime1[j][k]) && TwoDiaseState.S.equals(statesTime2[j][k])) {
+					if (TwoDiasesState.I1.equals(statesTime1[j][k]) && TwoDiasesState.S.equals(statesTime2[j][k])) {
 						delta++;
 					}
 
-					if (TwoDiaseState.I1.equals(statesTime2[j][k])) {
+					if (TwoDiasesState.I1.equals(statesTime2[j][k])) {
 						i1++;
 					}
 
@@ -61,11 +61,11 @@ public class GammaCalculator {
 
 			for (int j = 0; j < statesTime1.length; j++) {
 				for (int k = 0; k < statesTime1[j].length; k++) {
-					if (TwoDiaseState.I2.equals(statesTime1[j][k]) && TwoDiaseState.S.equals(statesTime2[j][k])) {
+					if (TwoDiasesState.I2.equals(statesTime1[j][k]) && TwoDiasesState.S.equals(statesTime2[j][k])) {
 						delta++;
 					}
 
-					if (TwoDiaseState.I2.equals(statesTime2[j][k])) {
+					if (TwoDiasesState.I2.equals(statesTime2[j][k])) {
 						i2++;
 					}
 				}
@@ -98,11 +98,11 @@ public class GammaCalculator {
 
 			for (int j = 0; j < statesTime1.length; j++) {
 				for (int k = 0; k < statesTime1[j].length; k++) {
-					if (TwoDiaseState.I.equals(statesTime1[j][k]) && TwoDiaseState.S.equals(statesTime2[j][k])) {
+					if (TwoDiasesState.I.equals(statesTime1[j][k]) && TwoDiasesState.S.equals(statesTime2[j][k])) {
 						delta++;
 					}
 
-					if (TwoDiaseState.I.equals(statesTime2[j][k])) {
+					if (TwoDiasesState.I.equals(statesTime2[j][k])) {
 						i++;
 					}
 
@@ -136,11 +136,11 @@ public class GammaCalculator {
 
 			for (int j = 0; j < statesTime1.length; j++) {
 				for (int k = 0; k < statesTime1[j].length; k++) {
-					if (TwoDiaseState.I12.equals(statesTime1[j][k]) && TwoDiaseState.S.equals(statesTime2[j][k])) {
+					if (TwoDiasesState.I12.equals(statesTime1[j][k]) && TwoDiasesState.S.equals(statesTime2[j][k])) {
 						delta++;
 					}
 
-					if (TwoDiaseState.I12.equals(statesTime2[j][k])) {
+					if (TwoDiasesState.I12.equals(statesTime2[j][k])) {
 						i12++;
 					}
 
@@ -174,11 +174,11 @@ public class GammaCalculator {
 
 			for (int j = 0; j < statesTime1.length; j++) {
 				for (int k = 0; k < statesTime1[j].length; k++) {
-					if (TwoDiaseState.I21.equals(statesTime1[j][k]) && TwoDiaseState.S.equals(statesTime2[j][k])) {
+					if (TwoDiasesState.I21.equals(statesTime1[j][k]) && TwoDiasesState.S.equals(statesTime2[j][k])) {
 						delta++;
 					}
 
-					if (TwoDiaseState.I21.equals(statesTime2[j][k])) {
+					if (TwoDiasesState.I21.equals(statesTime2[j][k])) {
 						i21++;
 					}
 				}

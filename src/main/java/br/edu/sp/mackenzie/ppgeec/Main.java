@@ -24,7 +24,7 @@ import org.knowm.xchart.style.markers.SeriesMarkers;
 
 import br.edu.sp.mackenzie.ppgeec.ca.chart.JZY3D;
 import br.edu.sp.mackenzie.ppgeec.ca.state.CellularAutomataState;
-import br.edu.sp.mackenzie.ppgeec.ca.state.TwoDiaseState;
+import br.edu.sp.mackenzie.ppgeec.ca.state.TwoDiasesState;
 import br.edu.sp.mackenzie.ppgeec.csv.CSVChart1;
 import br.edu.sp.mackenzie.ppgeec.csv.CSVUtils;
 import br.edu.sp.mackenzie.ppgeec.edo.calculator.VariablesCalculator;

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.sp.mackenzie.ppgeec.ca.state.CellularAutomataState;
-import br.edu.sp.mackenzie.ppgeec.ca.state.TwoDiaseState;
+import br.edu.sp.mackenzie.ppgeec.ca.state.TwoDiasesState;
 
 public class EpsilonCalculator {
 
@@ -24,11 +24,11 @@ public class EpsilonCalculator {
 
 			for (int j = 0; j < statesTime1.length; j++) {
 				for (int k = 0; k < statesTime1[j].length; k++) {
-					if (TwoDiaseState.R1.equals(statesTime1[j][k]) && TwoDiaseState.S.equals(statesTime2[j][k])) {
+					if (TwoDiasesState.R1.equals(statesTime1[j][k]) && TwoDiasesState.S.equals(statesTime2[j][k])) {
 						delta++;
 					}
 
-					if (TwoDiaseState.R1.equals(statesTime2[j][k])) {
+					if (TwoDiasesState.R1.equals(statesTime2[j][k])) {
 						r1++;
 					}
 
@@ -61,11 +61,11 @@ public class EpsilonCalculator {
 
 			for (int j = 0; j < statesTime1.length; j++) {
 				for (int k = 0; k < statesTime1[j].length; k++) {
-					if (TwoDiaseState.R2.equals(statesTime1[j][k]) && TwoDiaseState.S.equals(statesTime2[j][k])) {
+					if (TwoDiasesState.R2.equals(statesTime1[j][k]) && TwoDiasesState.S.equals(statesTime2[j][k])) {
 						delta++;
 					}
 
-					if (TwoDiaseState.R2.equals(statesTime2[j][k])) {
+					if (TwoDiasesState.R2.equals(statesTime2[j][k])) {
 						r2++;
 					}
 				}
@@ -98,11 +98,11 @@ public class EpsilonCalculator {
 
 			for (int j = 0; j < statesTime1.length; j++) {
 				for (int k = 0; k < statesTime1[j].length; k++) {
-					if (TwoDiaseState.V.equals(statesTime1[j][k]) && TwoDiaseState.S.equals(statesTime2[j][k])) {
+					if (TwoDiasesState.V.equals(statesTime1[j][k]) && TwoDiasesState.S.equals(statesTime2[j][k])) {
 						delta++;
 					}
 
-					if (TwoDiaseState.V.equals(statesTime2[j][k])) {
+					if (TwoDiasesState.V.equals(statesTime2[j][k])) {
 						v++;
 					}
 
@@ -136,11 +136,11 @@ public class EpsilonCalculator {
 
 			for (int j = 0; j < statesTime1.length; j++) {
 				for (int k = 0; k < statesTime1[j].length; k++) {
-					if (TwoDiaseState.R.equals(statesTime1[j][k]) && TwoDiaseState.S.equals(statesTime2[j][k])) {
+					if (TwoDiasesState.R.equals(statesTime1[j][k]) && TwoDiasesState.S.equals(statesTime2[j][k])) {
 						delta++;
 					}
 
-					if (TwoDiaseState.R.equals(statesTime2[j][k])) {
+					if (TwoDiasesState.R.equals(statesTime2[j][k])) {
 						r++;
 					}
 
@@ -177,11 +177,11 @@ public class EpsilonCalculator {
 					CellularAutomataState stateTime1 = statesTime1[j][k];
 					CellularAutomataState stateTime2 = statesTime2[j][k];
 
-					if (TwoDiaseState.S.equals(stateTime1) && TwoDiaseState.V.equals(stateTime2)) {
+					if (TwoDiasesState.S.equals(stateTime1) && TwoDiasesState.V.equals(stateTime2)) {
 						delta++;
 					}
 
-					if (TwoDiaseState.S.equals(stateTime2)) {
+					if (TwoDiasesState.S.equals(stateTime2)) {
 						s++;
 					}
 				}

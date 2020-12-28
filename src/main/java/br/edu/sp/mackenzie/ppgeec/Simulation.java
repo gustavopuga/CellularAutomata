@@ -14,7 +14,7 @@ import org.apache.commons.lang3.time.DurationFormatUtils;
 import br.edu.sp.mackenzie.ppgeec.ca.CellularAutomata;
 import br.edu.sp.mackenzie.ppgeec.ca.neighborhood.MooreNeighborhood;
 import br.edu.sp.mackenzie.ppgeec.ca.state.CellularAutomataState;
-import br.edu.sp.mackenzie.ppgeec.ca.state.TwoDiaseState;
+import br.edu.sp.mackenzie.ppgeec.ca.state.TwoDiasesState;
 import br.edu.sp.mackenzie.ppgeec.edo.EDOGraphGenerator;
 import br.edu.sp.mackenzie.ppgeec.edo.calculator.AlfaCalculator;
 import br.edu.sp.mackenzie.ppgeec.edo.calculator.BetaCalculator;
@@ -27,9 +27,9 @@ public class Simulation {
 	public static void execute(SimulationCase simulationCase) throws IOException {
 
 		Instant start = Instant.now();
-		TwoDiaseState.initGraph(simulationCase);
+		TwoDiasesState.initGraph(simulationCase);
 		CellularAutomata ca = new CellularAutomata(Constants.COLUMNS, Constants.ROWS,
-				new MooreNeighborhood(Constants.RADIUS), TwoDiaseState.class);
+				new MooreNeighborhood(Constants.RADIUS), TwoDiasesState.class);
 		ca.nextGeneration(Constants.TIME);
 		Instant end = Instant.now();
 		Duration between = Duration.between(start, end);
@@ -63,18 +63,18 @@ public class Simulation {
 
 
 		HashSet<CellularAutomataState> excludeStates1 = new HashSet<>();
-		excludeStates1.add(TwoDiaseState.R);
-		excludeStates1.add(TwoDiaseState.R1);
-		excludeStates1.add(TwoDiaseState.R2);
-		excludeStates1.add(TwoDiaseState.S);
-		excludeStates1.add(TwoDiaseState.V);
+		excludeStates1.add(TwoDiasesState.R);
+		excludeStates1.add(TwoDiasesState.R1);
+		excludeStates1.add(TwoDiasesState.R2);
+		excludeStates1.add(TwoDiasesState.S);
+		excludeStates1.add(TwoDiasesState.V);
 
 		HashSet<CellularAutomataState> excludeStates2 = new HashSet<>();
-		excludeStates2.add(TwoDiaseState.I);
-		excludeStates2.add(TwoDiaseState.I1);
-		excludeStates2.add(TwoDiaseState.I12);
-		excludeStates2.add(TwoDiaseState.I21);
-		excludeStates2.add(TwoDiaseState.I2);
+		excludeStates2.add(TwoDiasesState.I);
+		excludeStates2.add(TwoDiasesState.I1);
+		excludeStates2.add(TwoDiasesState.I12);
+		excludeStates2.add(TwoDiasesState.I21);
+		excludeStates2.add(TwoDiasesState.I2);
 
 		File dir = new File(simulationCase.getPath());
 		dir.mkdirs();
@@ -144,16 +144,16 @@ public class Simulation {
 			bw.write("\nV = " + upsilon);
 
 			bw.write("\n\n ======= VARIAVEIS AC ======= \n");
-			bw.write("\nS = " + VariablesCalculator.average(generations, lastGenerations, TwoDiaseState.S));
-			bw.write("\nI1 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiaseState.I1));
-			bw.write("\nI2 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiaseState.I2));
-			bw.write("\nI12 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiaseState.I12));
-			bw.write("\nI21 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiaseState.I21));
-			bw.write("\nI = " + VariablesCalculator.average(generations, lastGenerations, TwoDiaseState.I));
-			bw.write("\nR1 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiaseState.R1));
-			bw.write("\nR2 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiaseState.R2));
-			bw.write("\nR = " + VariablesCalculator.average(generations, lastGenerations, TwoDiaseState.R));
-			bw.write("\nV = " + VariablesCalculator.average(generations, lastGenerations, TwoDiaseState.V));
+			bw.write("\nS = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.S));
+			bw.write("\nI1 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.I1));
+			bw.write("\nI2 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.I2));
+			bw.write("\nI12 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.I12));
+			bw.write("\nI21 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.I21));
+			bw.write("\nI = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.I));
+			bw.write("\nR1 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.R1));
+			bw.write("\nR2 = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.R2));
+			bw.write("\nR = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.R));
+			bw.write("\nV = " + VariablesCalculator.average(generations, lastGenerations, TwoDiasesState.V));
 
 			bw.write("\n" + edoValues);
 			

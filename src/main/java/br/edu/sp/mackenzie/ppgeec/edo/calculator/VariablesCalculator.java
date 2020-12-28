@@ -5,11 +5,11 @@ import java.util.List;
 
 import br.edu.sp.mackenzie.ppgeec.Constants;
 import br.edu.sp.mackenzie.ppgeec.ca.state.CellularAutomataState;
-import br.edu.sp.mackenzie.ppgeec.ca.state.TwoDiaseState;
+import br.edu.sp.mackenzie.ppgeec.ca.state.TwoDiasesState;
 
 public class VariablesCalculator {
 
-	public static double average(List<CellularAutomataState[][]> generations, int lastGenerations, TwoDiaseState state) {
+	public static double average(List<CellularAutomataState[][]> generations, int lastGenerations, TwoDiasesState state) {
 		int first = generations.size() - lastGenerations - 2;
 		if (first < 0) {
 			first = 0;

@@ -15,7 +15,7 @@ import org.knowm.xchart.style.Styler.LegendPosition;
 import org.knowm.xchart.style.markers.SeriesMarkers;
 
 import br.edu.sp.mackenzie.ppgeec.Constants;
-import br.edu.sp.mackenzie.ppgeec.ca.state.TwoDiaseState;
+import br.edu.sp.mackenzie.ppgeec.ca.state.TwoDiasesState;
 
 public class EDOGraphGenerator {
 
@@ -97,16 +97,16 @@ public class EDOGraphGenerator {
 
 	private void getEquations() {
 
-		sValues.add(TwoDiaseState.S.getPercentage());
-		i1Values.add(TwoDiaseState.I1.getPercentage());
-		i2Values.add(TwoDiaseState.I2.getPercentage());
-		i12Values.add(TwoDiaseState.I12.getPercentage());
-		i21Values.add(TwoDiaseState.I21.getPercentage());
-		iValues.add(TwoDiaseState.I.getPercentage());
-		r1Values.add(TwoDiaseState.R1.getPercentage());
-		r2Values.add(TwoDiaseState.R2.getPercentage());
-		rValues.add(TwoDiaseState.R.getPercentage());
-		vValues.add(TwoDiaseState.V.getPercentage());
+		sValues.add(TwoDiasesState.S.getPercentage());
+		i1Values.add(TwoDiasesState.I1.getPercentage());
+		i2Values.add(TwoDiasesState.I2.getPercentage());
+		i12Values.add(TwoDiasesState.I12.getPercentage());
+		i21Values.add(TwoDiasesState.I21.getPercentage());
+		iValues.add(TwoDiasesState.I.getPercentage());
+		r1Values.add(TwoDiasesState.R1.getPercentage());
+		r2Values.add(TwoDiasesState.R2.getPercentage());
+		rValues.add(TwoDiasesState.R.getPercentage());
+		vValues.add(TwoDiasesState.V.getPercentage());
 		tValues.add(0d);
 
 		int time = (int) (Constants.TIME / STEP);
@@ -179,16 +179,16 @@ public class EDOGraphGenerator {
 		double[] arrayR = rValues.stream().mapToDouble(x -> x).toArray();
 		double[] arrayV = vValues.stream().mapToDouble(x -> x).toArray();
 
-		String sLabel =  TwoDiaseState.S.getSymbol() + "    " + TwoDiaseState.S.getDescription();
-		String i1Label = TwoDiaseState.I1.getSymbol() + "  " + TwoDiaseState.I1.getDescription();
-		String i2Label = TwoDiaseState.I2.getSymbol() + "  " +TwoDiaseState.I2.getDescription();
-		String i12Label = TwoDiaseState.I12.getSymbol() + " " + TwoDiaseState.I12.getDescription();
-		String i21Label = TwoDiaseState.I21.getSymbol() + " " +TwoDiaseState.I21.getDescription();
-		String iLabel = TwoDiaseState.I.getSymbol() + "    " + TwoDiaseState.I.getDescription();
-		String r1Label = TwoDiaseState.R1.getSymbol() + "  " + TwoDiaseState.R1.getDescription();
-		String r2Label = TwoDiaseState.R2.getSymbol() + "  " + TwoDiaseState.R2.getDescription();
-		String rLabel = TwoDiaseState.R.getSymbol() + "   " + TwoDiaseState.R.getDescription();
-		String vLabel = TwoDiaseState.V.getSymbol() + "   " + TwoDiaseState.V.getDescription();
+		String sLabel =  TwoDiasesState.S.getSymbol() + "    " + TwoDiasesState.S.getDescription();
+		String i1Label = TwoDiasesState.I1.getSymbol() + "  " + TwoDiasesState.I1.getDescription();
+		String i2Label = TwoDiasesState.I2.getSymbol() + "  " +TwoDiasesState.I2.getDescription();
+		String i12Label = TwoDiasesState.I12.getSymbol() + " " + TwoDiasesState.I12.getDescription();
+		String i21Label = TwoDiasesState.I21.getSymbol() + " " +TwoDiasesState.I21.getDescription();
+		String iLabel = TwoDiasesState.I.getSymbol() + "    " + TwoDiasesState.I.getDescription();
+		String r1Label = TwoDiasesState.R1.getSymbol() + "  " + TwoDiasesState.R1.getDescription();
+		String r2Label = TwoDiasesState.R2.getSymbol() + "  " + TwoDiasesState.R2.getDescription();
+		String rLabel = TwoDiasesState.R.getSymbol() + "   " + TwoDiasesState.R.getDescription();
+		String vLabel = TwoDiasesState.V.getSymbol() + "   " + TwoDiasesState.V.getDescription();
 
 		XYChart chart1 = buildXYChart();
 		chart1.addSeries(i1Label, xTime, arrayI1).setMarker(SeriesMarkers.NONE);

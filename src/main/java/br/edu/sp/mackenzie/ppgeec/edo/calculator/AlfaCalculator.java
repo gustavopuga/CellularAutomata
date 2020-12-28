@@ -5,7 +5,7 @@ import java.util.List;
 
 import br.edu.sp.mackenzie.ppgeec.Constants;
 import br.edu.sp.mackenzie.ppgeec.ca.state.CellularAutomataState;
-import br.edu.sp.mackenzie.ppgeec.ca.state.TwoDiaseState;
+import br.edu.sp.mackenzie.ppgeec.ca.state.TwoDiasesState;
 
 public class AlfaCalculator {
 
@@ -33,31 +33,31 @@ public class AlfaCalculator {
 					CellularAutomataState stateTime1 = statesTime1[j][k];
 					CellularAutomataState stateTime2 = statesTime2[j][k];
 
-					if (TwoDiaseState.S.equals(stateTime1)
-							&& (TwoDiaseState.I1.equals(stateTime2) || TwoDiaseState.I2.equals(stateTime2))) {
+					if (TwoDiasesState.S.equals(stateTime1)
+							&& (TwoDiasesState.I1.equals(stateTime2) || TwoDiasesState.I2.equals(stateTime2))) {
 						delta++;
 					}
 
-					if (TwoDiaseState.S.equals(stateTime2)) {
+					if (TwoDiasesState.S.equals(stateTime2)) {
 						s++;
 					}
 
-					if (TwoDiaseState.I1.equals(stateTime2)) {
+					if (TwoDiasesState.I1.equals(stateTime2)) {
 						i1++;
 					}
 
-					if (TwoDiaseState.I12.equals(stateTime2)) {
+					if (TwoDiasesState.I12.equals(stateTime2)) {
 						i12++;
 					}
 					
-					if (TwoDiaseState.I2.equals(stateTime2)) {
+					if (TwoDiasesState.I2.equals(stateTime2)) {
 						i2++;
 					}
 
-					if (TwoDiaseState.I21.equals(stateTime2)) {
+					if (TwoDiasesState.I21.equals(stateTime2)) {
 						i21++;
 					}
-					if (TwoDiaseState.I.equals(stateTime2)) {
+					if (TwoDiasesState.I.equals(stateTime2)) {
 						i++;
 					}
 				}
@@ -94,19 +94,19 @@ public class AlfaCalculator {
 					CellularAutomataState stateTime1 = statesTime1[j][k];
 					CellularAutomataState stateTime2 = statesTime2[j][k];
 					
-					if (TwoDiaseState.S.equals(stateTime1) && TwoDiaseState.I1.equals(stateTime2)) {
+					if (TwoDiasesState.S.equals(stateTime1) && TwoDiasesState.I1.equals(stateTime2)) {
 						delta++;
 					}
 
-					if (TwoDiaseState.S.equals(stateTime2)) {
+					if (TwoDiasesState.S.equals(stateTime2)) {
 						s++;
 					}
 
-					if (TwoDiaseState.I1.equals(stateTime2)) {
+					if (TwoDiasesState.I1.equals(stateTime2)) {
 						i1++;
 					}
 
-					if (TwoDiaseState.I12.equals(stateTime2)) {
+					if (TwoDiasesState.I12.equals(stateTime2)) {
 						i12++;
 					}
 				}
@@ -145,22 +145,22 @@ public class AlfaCalculator {
 					CellularAutomataState stateTime1 = statesTime1[j][k];
 					CellularAutomataState stateTime2 = statesTime2[j][k];
 					
-					if (TwoDiaseState.S.equals(stateTime1) && TwoDiaseState.I2.equals(stateTime2)) {
+					if (TwoDiasesState.S.equals(stateTime1) && TwoDiasesState.I2.equals(stateTime2)) {
 						delta++;
 					}
 
-					if (TwoDiaseState.S.equals(stateTime2)) {
+					if (TwoDiasesState.S.equals(stateTime2)) {
 						s++;
 					}
 
-					if (TwoDiaseState.I.equals(stateTime2)) {
+					if (TwoDiasesState.I.equals(stateTime2)) {
 						i++;
 					}
 
-					if (TwoDiaseState.I2.equals(stateTime2)) {
+					if (TwoDiasesState.I2.equals(stateTime2)) {
 						i2++;
 					}
-					if (TwoDiaseState.I21.equals(stateTime2)) {
+					if (TwoDiasesState.I21.equals(stateTime2)) {
 						i21++;
 					}
 				}
@@ -200,22 +200,22 @@ public class AlfaCalculator {
 					CellularAutomataState stateTime1 = statesTime1[j][k];
 					CellularAutomataState stateTime2 = statesTime2[j][k];
 					
-					if (TwoDiaseState.V.equals(stateTime1) && TwoDiaseState.I.equals(stateTime2)) {
+					if (TwoDiasesState.V.equals(stateTime1) && TwoDiasesState.I.equals(stateTime2)) {
 						delta++;
 					}
 
-					if (TwoDiaseState.V.equals(stateTime2)) {
+					if (TwoDiasesState.V.equals(stateTime2)) {
 						v++;
 					}
 
-					if (TwoDiaseState.I.equals(stateTime2)) {
+					if (TwoDiasesState.I.equals(stateTime2)) {
 						i++;
 					}
 
-					if (TwoDiaseState.I2.equals(stateTime2)) {
+					if (TwoDiasesState.I2.equals(stateTime2)) {
 						i2++;
 					}
-					if (TwoDiaseState.I21.equals(stateTime2)) {
+					if (TwoDiasesState.I21.equals(stateTime2)) {
 						i21++;
 					}
 				}
@@ -254,19 +254,19 @@ public class AlfaCalculator {
 					CellularAutomataState stateTime1 = statesTime1[j][k];
 					CellularAutomataState stateTime2 = statesTime2[j][k];
 					
-					if (TwoDiaseState.R2.equals(stateTime1) && TwoDiaseState.I12.equals(stateTime2)) {
+					if (TwoDiasesState.R2.equals(stateTime1) && TwoDiasesState.I12.equals(stateTime2)) {
 						delta++;
 					}
 
-					if (TwoDiaseState.R2.equals(stateTime2)) {
+					if (TwoDiasesState.R2.equals(stateTime2)) {
 						r2++;
 					}
 
-					if (TwoDiaseState.I1.equals(stateTime2)) {
+					if (TwoDiasesState.I1.equals(stateTime2)) {
 						i1++;
 					}
 
-					if (TwoDiaseState.I12.equals(stateTime2)) {
+					if (TwoDiasesState.I12.equals(stateTime2)) {
 						i12++;
 					}
 
@@ -307,22 +307,22 @@ public class AlfaCalculator {
 					CellularAutomataState stateTime1 = statesTime1[j][k];
 					CellularAutomataState stateTime2 = statesTime2[j][k];
 					
-					if (TwoDiaseState.R1.equals(stateTime1) && TwoDiaseState.I21.equals(stateTime2)) {
+					if (TwoDiasesState.R1.equals(stateTime1) && TwoDiasesState.I21.equals(stateTime2)) {
 						delta++;
 					}
 
-					if (TwoDiaseState.R1.equals(stateTime2)) {
+					if (TwoDiasesState.R1.equals(stateTime2)) {
 						r1++;
 					}
 
-					if (TwoDiaseState.I.equals(stateTime2)) {
+					if (TwoDiasesState.I.equals(stateTime2)) {
 						i++;
 					}
 
-					if (TwoDiaseState.I2.equals(stateTime2)) {
+					if (TwoDiasesState.I2.equals(stateTime2)) {
 						i2++;
 					}
-					if (TwoDiaseState.I21.equals(stateTime2)) {
+					if (TwoDiasesState.I21.equals(stateTime2)) {
 						i21++;
 					}
 				}
@@ -358,11 +358,11 @@ public class AlfaCalculator {
 					CellularAutomataState stateTime1 = statesTime1[j][k];
 					CellularAutomataState stateTime2 = statesTime2[j][k];
 					
-					if (TwoDiaseState.S.equals(stateTime1) && TwoDiaseState.I1.equals(stateTime2)) {
+					if (TwoDiasesState.S.equals(stateTime1) && TwoDiasesState.I1.equals(stateTime2)) {
 						delta_S_I1++;
 					}
 
-					if (TwoDiaseState.S.equals(stateTime1) && (TwoDiaseState.I1.equals(stateTime2) || TwoDiaseState.I2.equals(stateTime2))) {
+					if (TwoDiasesState.S.equals(stateTime1) && (TwoDiasesState.I1.equals(stateTime2) || TwoDiasesState.I2.equals(stateTime2))) {
 						deltaS_I1_I2++;
 					}
 				}
@@ -397,11 +397,11 @@ public class AlfaCalculator {
 					CellularAutomataState stateTime1 = statesTime1[j][k];
 					CellularAutomataState stateTime2 = statesTime2[j][k];
 					
-					if (TwoDiaseState.S.equals(stateTime1) && TwoDiaseState.I2.equals(stateTime2)) {
+					if (TwoDiasesState.S.equals(stateTime1) && TwoDiasesState.I2.equals(stateTime2)) {
 						delta_S_I1++;
 					}
 					
-					if (TwoDiaseState.S.equals(stateTime1) && (TwoDiaseState.I1.equals(stateTime2) || TwoDiaseState.I2.equals(stateTime2))) {
+					if (TwoDiasesState.S.equals(stateTime1) && (TwoDiasesState.I1.equals(stateTime2) || TwoDiasesState.I2.equals(stateTime2))) {
 						deltaS_I1_I2++;
 					}
 				}

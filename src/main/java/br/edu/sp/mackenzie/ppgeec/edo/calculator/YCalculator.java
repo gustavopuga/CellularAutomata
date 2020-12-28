@@ -5,7 +5,7 @@ import java.util.List;
 
 import br.edu.sp.mackenzie.ppgeec.Constants;
 import br.edu.sp.mackenzie.ppgeec.ca.state.CellularAutomataState;
-import br.edu.sp.mackenzie.ppgeec.ca.state.TwoDiaseState;
+import br.edu.sp.mackenzie.ppgeec.ca.state.TwoDiasesState;
 
 public class YCalculator {
 
@@ -27,8 +27,8 @@ public class YCalculator {
 					CellularAutomataState stateTime1 = statesTime1[j][k];
 					CellularAutomataState stateTime2 = statesTime2[j][k];
 
-					if ((TwoDiaseState.I1.equals(stateTime1) || TwoDiaseState.I12.equals(stateTime1))
-							&& TwoDiaseState.S.equals(stateTime2)) {
+					if ((TwoDiasesState.I1.equals(stateTime1) || TwoDiasesState.I12.equals(stateTime1))
+							&& TwoDiasesState.S.equals(stateTime2)) {
 						delta++;
 					}
 				}
@@ -59,8 +59,8 @@ public class YCalculator {
 					CellularAutomataState stateTime1 = statesTime1[j][k];
 					CellularAutomataState stateTime2 = statesTime2[j][k];
 
-					if ((TwoDiaseState.I2.equals(stateTime1) || TwoDiaseState.I21.equals(stateTime1)
-							|| TwoDiaseState.I.equals(stateTime1)) && TwoDiaseState.S.equals(stateTime2)) {
+					if ((TwoDiasesState.I2.equals(stateTime1) || TwoDiasesState.I21.equals(stateTime1)
+							|| TwoDiasesState.I.equals(stateTime1)) && TwoDiasesState.S.equals(stateTime2)) {
 						delta++;
 					}
 				}
@@ -89,7 +89,7 @@ public class YCalculator {
 				for (int k = 0; k < statesTime1[j].length; k++) {
 					CellularAutomataState stateTime1 = statesTime1[j][k];
 
-					if ((TwoDiaseState.I1.equals(stateTime1) || TwoDiaseState.I12.equals(stateTime1))) {
+					if ((TwoDiasesState.I1.equals(stateTime1) || TwoDiasesState.I12.equals(stateTime1))) {
 						delta++;
 					}
 				}
@@ -119,7 +119,7 @@ public class YCalculator {
 					CellularAutomataState stateTime1 = statesTime1[j][k];
 
 					
-					if ((TwoDiaseState.I2.equals(stateTime1) || TwoDiaseState.I21.equals(stateTime1) || TwoDiaseState.I.equals(stateTime1))) {
+					if ((TwoDiasesState.I2.equals(stateTime1) || TwoDiasesState.I21.equals(stateTime1) || TwoDiasesState.I.equals(stateTime1))) {
 						delta++;
 					}
 				}
